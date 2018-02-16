@@ -90,33 +90,39 @@ case+ e0 of
 //
 | X() => e0
 //
-| Neg(e1) =>
+| Neg(e1) => let 
+    val e1 = simplfy_expr(e1)
+  in
     (
     case+ e1 of
     | Int(i) => Int(~i)
-    | _ => Neg( simplfy_expr(e1) )
+    | _ => Neg(e1)
     )
+  end
 //
-| Mul(e1, e2) =>
+| Mul(e1, e2) => let
+    val e1 = simplfy_expr(e1)
+    val e2 = simplfy_expr(e2)
+  in
       (
       case+ (e1, e2) of
       | (Int(i), e2) => 
         (
-        if i = 0 then e1 
+        if i = 0 then e1
         else 
-          (if i = 1 then simplfy_expr(e2) 
+          (if i = 1 then e2 
             else
             (
             case+ e2 of
             | Mul(e3, e4) =>
-                ( 
+                (
                 case+ (e3, e4) of
-                | (Int(j), e4) => simplfy_expr( Mul(Int(i * j), simplfy_expr(e4)) )
-                | (e3, Int(j)) => simplfy_expr( Mul(Int(i * j), simplfy_expr(e3)) )
-                | ( _, _ ) => e0
+                | (Int(j), e4) => Mul(Int(i * j), simplfy_expr(e4))
+                | (e3, Int(j)) => Mul(Int(i * j), simplfy_expr(e3))
+                | ( _, _ ) => Mul(e1, e2)
                 )
             | Int(j) => Int(i * j)
-            | _ => e0
+            | _ => Mul( e1, e2 )
             ) // end of [case]
           ) // end of [else]
         ) // end of [if]
@@ -131,29 +137,36 @@ case+ e0 of
             | Mul(e3, e4) =>
                 ( 
                 case+ (e3, e4) of
-                | (Int(j), e4) => simplfy_expr( Mul(Int(i * j), simplfy_expr(e4)) )
-                | (e3, Int(j)) => simplfy_expr( Mul(Int(i * j), simplfy_expr(e3)) )
-                | ( _, _ ) => e0
+                | (Int(j), e4) => Mul(Int(i * j), simplfy_expr(e4)) 
+                | (e3, Int(j)) => Mul(Int(i * j), simplfy_expr(e3)) 
+                | ( _, _ ) => Mul(e1, e2)
                 )
             | Int(j) => Int(i * j)
-            | _ => e0
+            | _ => Mul( e1, e2 )
             ) // end of [case]
           ) // end of [else]
         ) // end of [if]
-      | (_, _) => e0
-      ) //end of case   
+      | (_, _) => Mul( e1, e2 )
+      ) //end of case
+  end
+         
 //
-| Add(e1, e2) =>
+| Add(e1, e2) => let
+
+    val e1 = simplfy_expr(e1)
+    val e2 = simplfy_expr(e2)
+    
+    in
       (
       case+ (e1, e2) of
       | (Int(i), e2) => 
         (
-        if i = 0 then simplfy_expr(e2)
+        if i = 0 then e2
         else
           (
           case+ e2 of
           | Int(j) => Int(i + j)
-          | _ => e0
+          | _ => Add( e1, e2 )
           ) // end of [else]
         ) // end of [if]
       | (e1, Int(i)) =>
@@ -163,13 +176,19 @@ case+ e0 of
           (
           case+ e1 of
           | Int(j) => Int(i + j)
-          | _ => e0
+          | _ => Add( e1, e2 )
           ) // end of [else]
         ) // end of [if]
-      | (_, _) => e0 
+      | (_, _) => Add( e1, e2 )
       ) // end of [case]
+    end
 //
-| Sub(e1, e2) =>
+| Sub(e1, e2) => let
+    
+    val e1 = simplfy_expr(e1)
+    val e2 = simplfy_expr(e2)
+    
+    in
       (
       case- (e1, e2) of
       | (Int(i), e2) => 
@@ -179,23 +198,29 @@ case+ e0 of
           (
           case+ e2 of
           | Int(j) => Int(i - j)
-          | _ => e0
+          | _ => Sub( e1, e2 )
           ) // end of [else]
         ) // end of [if]
       | (e1, Int(i)) =>
         (
-        if i = 0 then simplfy_expr(e1)
+        if i = 0 then e1
         else
           (
           case+ e1 of
           | Int(j) => Int(i - j)
-          | _ => e0
+          | _ => Sub( e1, e2 )
           ) // end of [else]
         ) // end of [if]
-      | (_, _) => e0
+      | (_, _) => Sub( e1, e2 )
       )
+    end
 //
-| Div(e1, e2) =>
+| Div(e1, e2) => let
+    
+    val e1 = simplfy_expr(e1)
+    val e2 = simplfy_expr(e2)
+    
+    in
       (
       case- (e1, e2) of
       | (Int(i), e2) => 
@@ -205,17 +230,18 @@ case+ e0 of
           (
           case+ e2 of
           | Int(j) => Int(i / j)
-          | _ => e0
+          | _ =>  Div( e1, e2 )
           ) // end of [else]
         ) // end of [if]
       | (e1, Int(i)) =>
           (
           case+ e1 of
           | Int(j) => Int(i / j)
-          | _ => e0
+          | _ =>  Div( e1, e2 )
           ) // end of [else]
-      | (_, _) => e0
+      | (_, _) => Div( e1, e2 )
       )
+    end
 )
 
 (* ****** ****** *)
