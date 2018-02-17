@@ -1,6 +1,6 @@
 (* ****** ****** *)
 //
-// LG 2018-02-15
+// LG 2018-02-17
 //
 (* ****** ****** *)
 
@@ -71,7 +71,7 @@ fprint_tree(out, t0) = let
             (
             case+ res of
             | nil0() => ()
-            | cons0(_, _) => let 
+            | _ => let 
                 val () = print_nodes(res) 
               in 
                 helper(out, res, nil0()) 
@@ -90,32 +90,6 @@ in
       helper(out, cons0(t0, nil0()), nil0())    
     end
 end
-
-(* ****** ****** *)
-
-implement
-main0() = ()
-where
-{
-val t15 = Cons(Nil(), 15, Nil())
-val t14 = Cons(Nil(), 14, Nil())
-val t13 = Cons(Nil(), 13, Nil())
-val t12 = Cons(Nil(), 12, Nil())
-val t11 = Cons(Nil(), 11, Nil())
-val t10 = Cons(Nil(), 10, Nil())
-val t9 = Cons(Nil(), 9, Nil())
-val t8 = Cons(Nil(), 8, Nil())
-val t7 = Cons(t14, 7, t15)
-val t6 = Cons(t12, 6, t13)
-val t5 = Cons(t10, 5, t11)
-val t4 = Cons(t8, 4, t9)
-val t3 = Cons(t6, 3, t7)
-val t2 = Cons(t4, 2, t5)
-val t1 = Cons(t2, 1, t3)
-
-val () = println!("t1 =")
-val () = println!(t1)
-}
 
 (* ****** ****** *)
 
