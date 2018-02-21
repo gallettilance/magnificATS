@@ -20,7 +20,9 @@ equal_expr_expr(t1: expr, t2: expr): bool
 (* ****** ****** *)
 
 implement
-max_degree(t0) =
+max_degree(t0) = let
+val t0 = simplfy_expr(t0)
+in
 case+ t0 of
 | Int(_) => 0
 | X() => 1
@@ -49,6 +51,7 @@ case+ t0 of
   in
     m1 - m2
   end
+end
 
 implement
 equal_expr_expr(t1, t2) = let
@@ -67,7 +70,7 @@ equal_expr_expr(t1, t2) = let
     end
     )
 in
-  if d1 > d2 then helper(t1, t2, d1) else helper(t1, t2, d2)
+  if d1 = d2 then helper(t1, t2, d1) else false
 end
 
 (* ****** ****** *)
