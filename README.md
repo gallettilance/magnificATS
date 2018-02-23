@@ -1,14 +1,14 @@
 # magnificATS
 
-A collection of ATS goodness.
+A collection of various programming exercises I have done in ATS.
 
 ### EXPRESSION
 
-[EXPRESSION](./EXPRESSSION/README.md) provides a way of creating and manipulating expressions involving a single variable X (for example polynomials in X). These expressions can be evaluated for a given X value, simplified given identity and distribution rules, and compared to other expressions for equality.
+[EXPRESSION](./EXPRESSSION/README.md) provides a way of creating and manipulating expressions involving a single variable X (polynomials in X). These expressions can be evaluated for a given X value, simplified given identity and distribution rules, and compared to other expressions for equality.
 
 ### LAMBDA
 
-[LAMBDA](./LAMBDA/README.md) is a small meta language on top of ATS that provides an interface for creating lambda functions and developing lambda calculus examples.
+[LAMBDA](./LAMBDA/README.md) is a small programming language that provides an interface for creating lambda functions and developing/ interpreting lambda calculus examples.
 
 ### LAZY
 
