@@ -12,5 +12,6 @@ cleanall:: clean
 cleanall:: ; rm -f tree_dats
 cleanall:: ; rm -f bfs_dats
 cleanall:: ; rm -f dfs_dats
+cleanall:: ; rm -f checkbst_dats
 
 ###### end of [Makefile] ######

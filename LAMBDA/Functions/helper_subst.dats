@@ -4,7 +4,7 @@
 //
 (* ****** ****** *)
 
-#include "./../Struct/lambda.dats"
+#include "./../Struct/lambda_subst.dats"
 
 (* ****** ****** *)
 
