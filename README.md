@@ -10,13 +10,9 @@ A collection of various programming exercises I have done in ATS.
 
 [LAMBDA](./LAMBDA) is a small programming language that provides an interface for creating lambda functions and developing/ interpreting lambda calculus examples.
 
-### LAZY
-
-[LAZY](./LAZY) is a collection of algorithms written in a lazy style. You will find similar problems as those in RECURSION.
-
 ### RECURSION
 
-[RECURSION](./RECURSION) is a collection of algorithms written in a (often tail-) recursive style. You will find some dynamic programming, graph search, and other fun problems here.
+[RECURSION](./RECURSION) is a collection of algorithms written in a recursive style. You will find some dynamic programming, graph search, and other fun problems here.
 
 ### STATISTICS
 
