@@ -19,10 +19,11 @@ else
   else
   (
     let
-      val () = println!("i = ", i, " elm = ", elm)
-      val () = print_board(res_bd)
-      val () = println!()
-      val () = println!()
+      (*
+        val () = println!("i = ", i, " elm = ", elm)
+        val () = print_board(res_bd)
+        val () = println!()
+      *)
       val legal = is_legal_move(org_bd, i)
     in
       if legal 
