@@ -28,5 +28,8 @@ val r8 = (0, 9, 0, 0, 0, 0, 4, 0, 0)
 
 
 val board = (r0, r1, r2, r3, r4, r5, r6, r7, r8)
+val () = println!("Original Board = ")
+val () = print_board(board)
+val () = println!()
 val _ = search(board, 0, board, 1)
 }

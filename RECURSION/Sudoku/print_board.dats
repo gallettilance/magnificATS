@@ -30,9 +30,9 @@ then
     val row = get_row(bd, i)
   in
     (
-    print!( row.0, " ") ; print!( row.1, " ") ; print!( row.2, " | ") ;
-    print!( row.3, " ") ; print!( row.4, " ") ; print!( row.5, " | ") ;
-    print!( row.6, " ") ; print!( row.7, " ") ; print!( row.8, " ") ;
+    if row.0 = 0 then print!("* ") else print!( row.0, " ") ; if row.1 = 0 then print!("* ") else print!( row.1, " ") ; if row.2 = 0 then print!("* | ") else print!( row.2, " | ") ;
+    if row.3 = 0 then print!("* ") else print!( row.3, " ") ; if row.4 = 0 then print!("* ") else print!( row.4, " ") ; if row.5 = 0 then print!("* | ") else print!( row.5, " | ") ;
+    if row.6 = 0 then print!("* ") else print!( row.6, " ") ; if row.7 = 0 then print!("* ") else print!( row.7, " ") ; if row.8 = 0 then print!("* | ") else print!( row.8, " | ") ;
     print_newline()
     )  
   end
@@ -46,9 +46,9 @@ then
     val col = get_col(bd, i)
   in
     (
-    println!( col.0, " ") ; println!( col.1, " ") ; println!( col.2, " ") ;
-    println!( col.3, " ") ; println!( col.4, " ") ; println!( col.5, " ") ;
-    println!( col.6, " ") ; println!( col.7, " ") ; println!( col.8, " ") ;
+    if col.0 = 0 then println!("* ") else println!( col.0, " ") ; if col.1 = 0 then println!("* ") else println!( col.1, " ") ; if col.2 = 0 then println!("* ") else println!( col.2, " ") ;
+    if col.3 = 0 then println!("* ") else println!( col.3, " ") ; if col.4 = 0 then println!("* ") else println!( col.4, " ") ; if col.5 = 0 then println!("* ") else println!( col.5, " ") ;
+    if col.6 = 0 then println!("* ") else println!( col.6, " ") ; if col.7 = 0 then println!("* ") else println!( col.7, " ") ; if col.8 = 0 then println!("* ") else println!( col.8, " ") ;
     print_newline()
     )  
   end
@@ -62,9 +62,9 @@ then
     val row = get_box(bd, box_num)
   in
     (
-    print!( row.0, " ") ; print!( row.1, " ") ; println!( row.2, " | ") ;
-    print!( row.3, " ") ; print!( row.4, " ") ; println!( row.5, " | ") ;
-    print!( row.6, " ") ; print!( row.7, " ") ; println!( row.8, " | ") ;
+    if row.0 = 0 then print!("* ") else print!( row.0, " ") ; if row.1 = 0 then print!("* ") else print!( row.1, " ") ; if row.2 = 0 then println!("* | ") else println!( row.2, " | ") ;
+    if row.3 = 0 then print!("* ") else print!( row.3, " ") ; if row.4 = 0 then print!("* ") else print!( row.4, " ") ; if row.5 = 0 then println!("* | ") else println!( row.5, " | ") ;
+    if row.6 = 0 then print!("* ") else print!( row.6, " ") ; if row.7 = 0 then print!("* ") else print!( row.7, " ") ; if row.8 = 0 then println!("* | ") else println!( row.8, " | ") ;
     print_newline()
     )
   end
