@@ -17,3 +17,7 @@ A collection of various programming exercises I have done in ATS.
 ### STATISTICS
 
 [STATISTICS](./STATISTICS) is a library of basic statistical functions written in various styles. An interface for performing Linear Regression in 2D is provided.
+
+_____
+
+Please visit [ats-lang.org](http://www.ats-lang.org/) for information about how to get started with ATS.
