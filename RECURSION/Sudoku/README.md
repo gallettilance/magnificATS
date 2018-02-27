@@ -1,3 +1,3 @@
 # Sudoku
 
-(coming soon)
+![sudoku](tty.gif)

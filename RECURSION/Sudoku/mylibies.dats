@@ -7,6 +7,10 @@
 #include "share/atspre_staload.hats"
 #include "share/atspre_staload_libats_ML.hats"
 
+%{
+  #include <unistd.h>
+%}
+
 #include "./board.dats"
 #include "./get_board.dats"
 #include "./set_board.dats"

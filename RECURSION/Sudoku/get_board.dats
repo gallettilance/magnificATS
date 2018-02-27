@@ -6,10 +6,6 @@
 
 extern
 fun
-get_boxelm_from_elm(elm_num: int): (int, int)
-
-extern
-fun
 get_row(bd: board, i: int) : int9
 
 extern
@@ -25,9 +21,6 @@ fun
 get_elm(bd: board, elm_num: int) : int
 
 (* ****** ****** *)
-
-implement
-get_boxelm_from_elm(elm_num) = ((elm_num / 9) % 9, elm_num - 9 * (elm_num / 9))  // to be continued
 
 implement
 get_box(bd, i) = let

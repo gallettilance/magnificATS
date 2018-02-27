@@ -12,18 +12,14 @@ search(org_bd: board, i: int, res_bd: board, elm: int): bool
 
 implement
 search(org_bd, i, res_bd, elm) = 
-if i > 80 then (println!("Solution = "); print_board(res_bd); true)
+if i > 80 then (println!("Solution = \n", res_bd); true)
 else
 (
   if i < 0 then (println!("No Solutions"); false)
   else
   (
     let
-      (*
-        val () = println!("i = ", i, " elm = ", elm)
-        val () = print_board(res_bd)
-        val () = println!()
-      *)
+      // val _ = ($extfcall(void, "printf", "\033c"); println!(res_bd); $extfcall(int, "usleep", 50000))
       val legal = is_legal_move(org_bd, i)
     in
       if legal 
