@@ -6,7 +6,7 @@ Is a collection of algorithms written in a recursive style. You will find some d
 
 ### Tree Search
 
-![tree](Tree/tty.gif)
+![tree](Trees/tty.gif)
 
 ### Sudoku Solver
 
