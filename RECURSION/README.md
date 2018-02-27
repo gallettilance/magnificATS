@@ -10,6 +10,6 @@ Is a collection of algorithms written in a recursive style. You will find some d
 
 ### Sudoku Solver
 
-![Sudoku](Sudoku/tty.gif)
+![Sudoku](Sudoku/GIF/tty2.gif)
 
 (more coming soon)

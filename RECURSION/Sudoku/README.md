@@ -1,3 +1,3 @@
 # Sudoku
 
-![sudoku](tty.gif)
+![sudoku](GIF/tty.gif)
