@@ -4,4 +4,4 @@ Is a library of basic statistical functions written in various styles. An interf
 
 ## Examples
 
-(coming soon)
+![example](GIF/tty.gif)

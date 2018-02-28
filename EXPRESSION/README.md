@@ -4,4 +4,10 @@ Provides a way of creating and manipulating expressions involving a single varia
 
 ## Examples
 
-(coming soon)
+### Struct + Evaluate
+
+![example](GIF/tty.gif)
+
+### Equality + Derivative
+
+![example](GIF/tty2.gif)
