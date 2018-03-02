@@ -24,13 +24,13 @@ read_loop(xs: stream_vt(string), primes: stream(int)): void
 (* ****** ****** *)
 
 implement
-theNats(i: int) = delay
+theNats(i: int) = $delay
 (
 stream_cons(i, theNats(i + 1))
 )
 
 implement
-sieve(nats) = delay
+sieve(nats) = $delay
 (
 case- !nats of
 | stream_cons(n, nats) => stream_cons(n, stream_filter(sieve(nats), lam(i) => i % n > 0))
@@ -63,4 +63,4 @@ where
 
 (* ****** ****** *)
 
-(* end of [fibo.dats] *)
+(* end of [sieve.dats] *)
