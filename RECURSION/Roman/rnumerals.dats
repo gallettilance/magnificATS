@@ -81,4 +81,4 @@ where
 
 (* ****** ****** *)
 
-(* end of [struct.dats] *)
+(* end of [rnumerals.dats] *)
