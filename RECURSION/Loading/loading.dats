@@ -17,6 +17,10 @@ extern
 fun
 loading(n: int): void
 
+extern
+fun
+waiting(n: int): void
+
 (* ****** ****** *)
 
 implement
@@ -31,7 +35,35 @@ loading(n) = let
       loop(n - 1)
     end
 in
-  (print!("|"); loop(n) ; println!(">"))
+  (print!("Loading   |"); loop(n) ; println!(">"))
+end
+
+implement
+waiting(n) = let
+  fun turn(n: int): void =
+    ifcase
+    | n = 0 => fprint(stdout_ref, "waiting   |  ")
+    | n = 1 => fprint(stdout_ref, "waiting   /  ")
+    | n = 2 => fprint(stdout_ref, "waiting   -  ")
+    | n = 3 => fprint(stdout_ref, "waiting   \\  ")
+    | n = 4 => fprint(stdout_ref, "waiting   |  ")
+    | n = 5 => fprint(stdout_ref, "waiting   /  ")
+    | n = 6 => fprint(stdout_ref, "waiting   -  ")
+    | _ => fprint(stdout_ref, "waiting   \\  ")
+  
+  fun loop(n: int): void =
+    if n <= 0 then ()
+    else let
+      val () = fprint!(stdout_ref, '\r')
+      val () = fileref_flush(stdout_ref)
+      val () = turn(n % 8)
+      val _ = $extfcall(int, "usleep", 1000000)
+      val () = fileref_flush(stdout_ref)
+    in
+      loop(n - 1)
+    end
+in
+  (println!(); loop(n); println!())
 end
 
 (* ****** ****** *)
@@ -41,6 +73,7 @@ main0() = ()
 where
 {
   val () = loading(12)
+  val () = waiting(8)
 }
 
 (* ****** ****** *)
