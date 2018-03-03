@@ -11,7 +11,8 @@
 
 extern
 fun
-str2list0(s: string): list0(char)
+{n: int}
+str2list0(s: string(n)): list0(char)
 
 extern
 fun
@@ -28,6 +29,39 @@ is_palindrome(inp: list0(char)): bool
 (* ****** ****** *)
 
 implement
+{n}
+str2list0(s) = let
+  fun 
+  {n:int}
+  aux(s: string(n), res: list0(char)): list0(char) =
+    if isneqz(s) then let
+      val c = (g0ofg1)(string_head(s))
+      val s = string_tail(s)
+    in
+      aux(s, cons0(c, res))
+    end
+    else res
+in
+  list0_reverse(aux(s, list0_nil()))
+end
+
+implement
+get_last(inp) = let
+  val xs = list0_reverse(inp)
+  val-list0_cons(x, xs) = xs
+in
+  x
+end
+
+implement
+remove_last(inp) = let
+  val xs = list0_reverse(inp)
+  val-list0_cons(x, xs0) = xs
+in
+  list0_reverse(xs0)
+end
+
+implement
 is_palindrome(inp) =
 case+ inp of
 | list0_nil() => true
@@ -42,6 +76,24 @@ case+ inp of
       is_palindrome(inp)
     end
     else false
+
+(* ****** ****** *)
+
+implement
+main0() = ()
+where
+{
+  val str = str2list0("abba")
+  val () = println!("Is ", str, " a palindrome? ", is_palindrome(str))
+  val str = str2list0("a")
+  val () = println!("Is ", str, " a palindrome? ", is_palindrome(str))
+  val str = str2list0("abacacaba")
+  val () = println!("Is ", str, " a palindrome? ", is_palindrome(str))
+  val str = str2list0("hello")
+  val () = println!("Is ", str, " a palindrome? ", is_palindrome(str))
+  val str = str2list0("serres")
+  val () = println!("Is ", str, " a palindrome? ", is_palindrome(str))
+}
 
 (* ****** ****** *)
 
