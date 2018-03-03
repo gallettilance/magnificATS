@@ -12,4 +12,8 @@ Is a collection of algorithms written in a recursive style. You will find some d
 
 ![Sudoku](Sudoku/GIF/tty2.gif)
 
+### NQueens
+
+![NQueens](NQueens/GIF/tty.gif)
+
 (more coming soon)

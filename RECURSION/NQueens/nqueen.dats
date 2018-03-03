@@ -9,7 +9,7 @@
 
 (* ****** ****** *)
 
-#define N 10
+#define N 5
 typedef board = list0(int)
 
 (* ****** ****** *)
@@ -35,6 +35,14 @@ fun
 search(bd: board, i: int, j: int, nsol:int): int
 
 (* ****** ****** *)
+
+fun listN(n:int): list0(int) = let
+  fun aux(n:int, xs:list0(int)): list0(int) =
+    if n <= 0 then xs
+    else aux(n - 1, cons0(0, xs))
+in
+  aux(n, list0_nil())
+end
 
 fun print_row(n: int, j: int): void = 
   if n + j = N then (print!("Q "); print_row(n - 1, j))
@@ -150,10 +158,8 @@ implement
 main0() = ()
 where
 {
-  val bd = g0ofg1($list(0,1,2,3,4,5,6,7,8,9))
-  val () = print_board(bd)
-  // val () = println!(get_queen(bd, 0))
-  // val () = println!(get_queen(bd, 1))
+  val () = println!("N = ", N)
+  val bd = listN(N)
   val () = println!(search(bd, 0, 0, 0))
 }
 
