@@ -21,6 +21,10 @@ extern
 fun
 waiting(n: int): void
 
+extern
+fun
+count_down(n: int): void
+
 (* ****** ****** *)
 
 implement
@@ -57,7 +61,7 @@ waiting(n) = let
       val () = fprint!(stdout_ref, '\r')
       val () = fileref_flush(stdout_ref)
       val () = turn(n % 8)
-      val _ = $extfcall(int, "usleep", 1000000)
+      val _ = $extfcall(int, "usleep", 500000)
       val () = fileref_flush(stdout_ref)
     in
       loop(n - 1)
@@ -65,6 +69,24 @@ waiting(n) = let
 in
   (println!(); loop(n); println!())
 end
+
+implement
+count_down(n) = let
+  fun loop(n: int): void =
+    if n < 0 then ()
+    else let
+      val () = fprint!(stdout_ref, '\r')
+      val () = fileref_flush(stdout_ref)
+      val () = fprint!(stdout_ref, " ", n, " ")
+      val _ = $extfcall(int, "usleep", 500000)
+      val () = fileref_flush(stdout_ref)
+    in
+      loop(n - 1)
+    end
+in
+  (println!(); loop(n); println!())
+end
+
 
 (* ****** ****** *)
 
@@ -74,6 +96,7 @@ where
 {
   val () = loading(12)
   val () = waiting(8)
+  val () = count_down(10)
 }
 
 (* ****** ****** *)
