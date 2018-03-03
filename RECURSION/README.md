@@ -14,6 +14,6 @@ Is a collection of algorithms written in a recursive style. You will find some d
 
 ### NQueens
 
-![NQueens](NQueens/GIF/tty.gif)
+![NQueens](NQueens/GIF/tty2.gif)
 
 (more coming soon)
