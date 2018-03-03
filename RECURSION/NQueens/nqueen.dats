@@ -9,7 +9,20 @@
 
 (* ****** ****** *)
 
-#define N 5
+local
+
+var Nvar : int = 0
+val N = ref_make_viewptr (view@ Nvar | addr@ Nvar)
+
+in // in of [local]
+
+fun
+N_get () : int = ref_get_elt (N)
+fun
+N_set (i: int): void = ref_set_elt (N, i)
+
+end 
+
 typedef board = list0(int)
 
 (* ****** ****** *)
@@ -45,7 +58,7 @@ in
 end
 
 fun print_row(n: int, j: int): void = 
-  if n + j = N then (print!("Q "); print_row(n - 1, j))
+  if n + j = N_get() then (print!("Q "); print_row(n - 1, j))
   else
   (
     if n <= 0 then println!()
@@ -57,7 +70,7 @@ print_board(bd) =
   case+ bd of
   | list0_nil() => println!()
   | list0_cons(b, bd) => 
-      (print_row(N, b); print_board(bd))
+      (print_row(N_get(), b); print_board(bd))
 
 implement
 get_queen(bd, i) = bd[i]
@@ -93,19 +106,19 @@ in
   if i = 0 
   then
   ( 
-    if j < 0 orelse j > N -1 then false
+    if j < 0 orelse j > N_get() -1 then false
     else true
   )
   else
   (
-    if j < 0 orelse j > N -1 then false
+    if j < 0 orelse j > N_get() -1 then false
     else test(i, j, i - 1, bd[i - 1])
   )
 end
 
 implement
 search(bd, i, j, nsol) = 
-if i > N - 1
+if i > N_get() - 1
 then let
   val () = println!("Solution = ", nsol)
   val () = print_board(bd)
@@ -134,7 +147,7 @@ else
       )
       else
       (
-        if j < N - 1 then search(bd, i, j + 1, nsol)
+        if j < N_get() - 1 then search(bd, i, j + 1, nsol)
         else
         (
           if i = 0 then (println!("Done"); nsol)
@@ -155,13 +168,15 @@ else
 (* ****** ****** *)
 
 implement
-main0() = ()
-where
-{
-  val () = println!("N = ", N)
-  val bd = listN(N)
-  val () = println!(search(bd, 0, 0, 0))
-}
+main0(argc, argv) = let
+  val input = (if (argc >= 2) then g0string2int_int(argv[1]) else 4): int
+  val () = N_set(input)
+  val () = println!("N = ", N_get())
+  val bd = listN(N_get())
+in
+  println!(search(bd, 0, 0, 0))
+end
+  
 
 (* ****** ****** *)
 
