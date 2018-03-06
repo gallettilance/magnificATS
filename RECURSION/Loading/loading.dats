@@ -25,6 +25,10 @@ extern
 fun
 count_down(n: int): void
 
+extern
+fun
+dots(n: int): void
+
 (* ****** ****** *)
 
 implement
@@ -87,6 +91,31 @@ in
   (println!(); loop(n); println!())
 end
 
+implement
+dots(n) = let
+  fun myfunc(i: int): void =
+    case- i of
+    | 0 => fprint!(stdout_ref, "dots      ")
+    | 1 => fprint!(stdout_ref, "dots  .   ")
+    | 2 => fprint!(stdout_ref, "dots  ..  ")
+    | 3 => fprint!(stdout_ref, "dots  ... ")
+    | 4 => fprint!(stdout_ref, "dots   .. ")
+    | 5 => fprint!(stdout_ref, "dots    . ")
+    
+  fun loop(i: int): void =
+    if i >= n then ()
+    else let
+      val () = myfunc(i % 6)
+      val () = fileref_flush(stdout_ref)
+      val _ = $extfcall(int, "usleep", 500000)
+      val () = fprint!(stdout_ref, '\r')
+      val () = fileref_flush(stdout_ref)
+    in
+      loop(i + 1)
+    end
+in
+  (println!(); loop(0); println!())
+end
 
 (* ****** ****** *)
 
@@ -96,7 +125,8 @@ where
 {
   val () = loading(12)
   val () = waiting(8)
-  val () = count_down(10)
+  val () = count_down(5)
+  val () = dots(15)
 }
 
 (* ****** ****** *)
