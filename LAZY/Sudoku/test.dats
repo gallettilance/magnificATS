@@ -1,16 +1,16 @@
 #include "./mylibies.dats"
 
 fun
-read_loop(xs: stream_vt(string), bd: stream(board)): void =
+read_loop(xs: stream_vt(string), bd: stream_vt(board)): void =
 case+ !xs of
-| ~stream_vt_nil() => ()
-| ~stream_vt_cons(x, xs) => 
-  let
-    val-stream_cons(p, bd) = !bd
-  in
-    (println!(p) ; read_loop(xs, bd))
-  end
-
+| ~stream_vt_nil() => (stream_vt_free(bd); ())
+| ~stream_vt_cons(x, xs) =>
+    (
+    case+ !bd of
+    | ~stream_vt_nil() => (stream_vt_free(xs); ())
+    | ~stream_vt_cons(b, bd) => (println!(b) ; read_loop(xs, bd))
+    )
+    
 implement
 main0() = ()
 where

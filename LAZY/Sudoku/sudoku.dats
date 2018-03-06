@@ -6,16 +6,16 @@
 
 extern
 fun
-search(org_bd: board, i: int, res_bd: board, elm: int): stream(board)
+search(org_bd: board, i: int, res_bd: board, elm: int): stream_vt(board)
 
 (* ****** ****** *)
 
 implement
 search(org_bd, i, res_bd, elm) = 
-if i > 80 then (println!("Solution = \n"); $delay( stream_nil() ))
+if i > 80 then (println!("Solution = \n"); $ldelay( stream_vt_nil() ))
 else
 (
-  if i < 0 then (println!("No Solutions"); $delay( stream_nil() ))
+  if i < 0 then (println!("No Solutions"); $ldelay( stream_vt_nil() ))
   else
   (
     let
@@ -35,7 +35,7 @@ else
             let
               val res_bd = set_elm(res_bd, i, elm)
             in
-              $delay( stream_cons(res_bd, search(org_bd, i + 1, res_bd, 1)) )
+              $ldelay( stream_vt_cons(res_bd, search(org_bd, i + 1, res_bd, 1)) )
             end
           )
           else
