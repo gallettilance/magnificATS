@@ -19,7 +19,6 @@ else
   else
   (
     let
-      // val _ = ($extfcall(void, "printf", "\033c"); println!(res_bd); $extfcall(int, "usleep", 50000))
       val legal = is_legal_move(org_bd, i)
     in
       if legal 
