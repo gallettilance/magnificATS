@@ -10,6 +10,12 @@ case+ !xs of
     | ~stream_vt_nil() => (stream_vt_free(xs); ())
     | ~stream_vt_cons(b, bd) => (println!(b) ; read_loop(xs, bd))
     )
+
+fun
+get_sol(b: board, bd: stream_vt(board)): board =
+case+ !bd of
+| ~stream_vt_nil() => b
+| ~stream_vt_cons(b, bd) => get_sol(b, bd)
     
 implement
 main0() = ()
@@ -59,5 +65,7 @@ val () = println!()
 val () = println!(board1)
 val () = println!()
 val s1 = search(board1, 0, board1, 1)
-val () = read_loop(streamize_fileref_line(stdin_ref), s1)
+//val () = read_loop(streamize_fileref_line(stdin_ref), s1)
+val sol = get_sol(board1, s1)
+val () = println!(sol)
 }
