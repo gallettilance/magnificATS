@@ -4,9 +4,7 @@
 //
 (* ****** ****** *)
 (*
-  Goal: find triples of 
-  unique triangular numbers
-  that sum to a target value
+  Based on: https://projecteuler.net/problem=621
 *)
 (* ****** ****** *)
 
@@ -25,16 +23,29 @@
 
 (* ****** ****** *)
 
-typedef intinf = $GINTINF_t.intinf
+typedef
+intinf = $GINTINF_t.intinf
 
-overload print with $GINTINF_t.print_intinf
+overload
+print with $GINTINF_t.print_intinf
 
-overload * with gmul_val_val
-overload + with gadd_val_val
-overload / with gdiv_val_val
-overload - with gsub_val_val
-//overload = with geq_val_val
-//overload > with ggt_val_val
+(* ****** ****** *)
+
+val intinf = gnumber_int<intinf>
+
+(* ****** ****** *)
+
+val gadd = gadd_val_val<intinf>
+val gsub = gsub_val_val<intinf>
+val gmul = gmul_val_val<intinf>
+val gdiv = gdiv_val_val<intinf>
+val gcompare = gcompare_val_val<intinf>
+
+overload * with gmul
+overload + with gadd
+overload / with gdiv
+overload - with gsub
+overload compare with gcompare
 
 typedef intinf3 = (intinf, intinf, intinf)
 typedef intinf2 = (intinf, intinf)
@@ -74,7 +85,7 @@ search2(orig, target) = let
     case+ opt of
     | nil0() => res
     | cons0(num, opt) => 
-        if gcompare_val_val(num, target) = 0
+        if compare(num, target) = 0
         then search1(opt, target, cons0(num, res))
         else search1(opt, target, res) 
         
@@ -116,34 +127,38 @@ implement
 list0_triangs(triangs, max, res) =
 case- !triangs of
 | stream_cons(t, triangs) => 
-    if gcompare_val_val(t, max) < 0 then res
+    if compare(t, max) > 0 then res
     else list0_triangs(triangs, max, cons0(t, res))
 
 implement
 nats(n) = $delay
 (
-  stream_cons(n, nats(n + gnumber_int<intinf>(1)))
+  stream_cons(n, nats(n + intinf(1)))
 )
 
 implement
 triangulars(nats) = 
 case- !nats of
 | stream_cons(n, nats) => 
-      $delay(stream_cons( gmul_val_val(n, (n + gnumber_int<intinf>(1))) / gnumber_int<intinf>(2), triangulars(nats)))
+      $delay(stream_cons(n*(n + intinf(1)) / intinf(2), triangulars(nats)))
 
 implement
 triang_repr(triangs, target) = search3(triangs, target)
 
 (* ****** ****** *)
 
+fun pow10(num: intinf, pow: int): intinf = 
+  if pow <= 0 then num 
+  else pow10(intinf(10) * num, pow - 1)
+
 implement
 main0() = ()
 where
 {
-  val theNats = nats(gnumber_int<intinf>(0))
+  val theNats = nats(intinf(0))
   val triangs = triangulars(theNats)
   
-  val x = gnumber_int<intinf>(9)
+  val x = pow10(intinf(1), 5)
   val () = println!("x = ", x)
   
   val ts = list0_triangs(triangs, x, nil0)
