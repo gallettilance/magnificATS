@@ -1,6 +1,6 @@
 (* ****** ****** *)
 //
-// LG 2018-02-15
+// LG 2018-03-10
 //
 (* ****** ****** *)
 
@@ -55,6 +55,7 @@ main0() = ()
 where
 {
   val () = println!("Number of even fibs below 4 million = ", even_fib_sum(4000000))}
+}
 
 (* ****** ****** *)
 
