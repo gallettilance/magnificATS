@@ -23,7 +23,7 @@ theNats2(nats: stream(int)): stream(stream(int2))
 
 extern
 fun
-read_loop(xs: stream_vt(string), nats2: stream(stream(int2))): void
+read_loop(xs: stream_vt(string), nats2: stream(int2)): void
 
 (* ****** ****** *)
 
@@ -44,21 +44,15 @@ in
 end
 
 implement
-read_loop(xs, nats2) = let
-  fun print_diag(xs: stream(int2)): void =
-    case+ !xs of
-    | stream_nil() => ()
-    | stream_cons(x, xs) => (println!("(", x.0, ", ", x.1, ")") ; print_diag(xs))
-in
-  case+ !xs of
-  | ~stream_vt_nil() => ()
-  | ~stream_vt_cons(x, xs) => 
-    let
-      val-stream_cons(n2, nats2) = !nats2
-    in
-      (print_diag(n2) ; read_loop(xs, nats2))
-    end
-end
+read_loop(xs, nats2) = 
+case+ !xs of
+| ~stream_vt_nil() => ()
+| ~stream_vt_cons(x, xs) => 
+  let
+    val-stream_cons(n2, nats2) = !nats2
+  in
+    (println!("(", n2.0, ", ", n2.1, ")") ; read_loop(xs, nats2))
+  end
 
 (* ****** ****** *)
 
@@ -69,7 +63,7 @@ where
   val Nats = theNats(0)
   val Nats2 = theNats2(Nats)
   val () = println!("Press ENTER for next diagonal - Ctrl-C to quit")
-  val () = read_loop(streamize_fileref_line(stdin_ref), Nats2)
+  val () = read_loop(streamize_fileref_line(stdin_ref), stream_concat(Nats2))
 }
 
 (* ****** ****** *)
