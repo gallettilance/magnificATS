@@ -10,15 +10,13 @@ If you have not already experienced this, the debugging process of programming c
 
 Probably the worst side-effect of this process is its impact on scalability, collaboration, and productivity. Imagine going through this process. Your code finally works and passes all the tests; you are proud and satisfied of your achievement.
 
-![](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
-
-Even though this happens:
-
 ![](https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/works-doesnt-work.jpg)
 
-Now say your manager, colleague or friend comes up to you and says "Hey, why don't we add feature x and change feature y". It is likely you are thinking about how you will likely fix the door but break windows (pun somewhat intended). This makes it inflexible to scale because of this mental obstacle coders have to go through. After a while of trying fixes in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable. Neither you nor anyone else wants to examine or read through it. This is why this process dampens collaboration and productivity.
+Now say your manager, colleague or friend comes up to you and says "Hey, why don't we add feature x and change feature y". It is likely you are thinking about how you will likely fix the door but break windows (pun somewhat intended). This makes it inflexible to scale because of this mental obstacle coders have to go through. After a while of trying fixes in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable. Neither you nor anyone else wants to examine or read through it. 
 
 ![](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
+
+This is why this process dampens collaboration and productivity.
 
 The goal of ATS is to restore your love of coding. My hope is that this talk/ repo will showcase how productive the ATS workflow can make you and why this methodology should be widely adopted. I hope it will inspire coders to try this methodology out for themselves and implement some of these features into mainstream languages.
 
