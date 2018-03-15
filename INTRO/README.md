@@ -16,7 +16,7 @@ Now say your manager, colleague or friend comes up to you and says "Hey, why don
 
 ![](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
 
-This is why this process dampens collaboration and productivity.
+Look at Frodo - he never wants to go through this again. This is why this process dampens collaboration and productivity.
 
 The goal of ATS is to restore your love of coding. My hope is that this talk/ repo will showcase how productive the ATS workflow can make you and why this methodology should be widely adopted. I hope it will inspire coders to try this methodology out for themselves and implement some of these features into mainstream languages.
 
