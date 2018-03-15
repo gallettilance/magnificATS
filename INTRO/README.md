@@ -29,3 +29,5 @@ In traditional coding, the workflow is the following bottom up approach: write c
 - You may implement code you realize later is not needed (Productivity)
 
 The proposed solution is the following top-down approach. Solve the problem at the algorithm level and write the pseudo code in ATS. Declare all needed functions, assign all types involved, etc so to pass typechecking. Then recurse down to the helper functions you declared but have not yet implemented. This clearly solves problem 2 above because we know we are implementing only functions that are necessary to our code. Problem 1 is tricky but I will argue that with the help of types many bugs will be flushed out statically which will increase productivity (especially when testing is expensive such as in fields like Machine Learning or Crypto Currency).
+
+(to be continued)
