@@ -2,23 +2,23 @@
 
 ## Why you should care
 
-[](https://i.imgur.com/HTisMpC.jpg)
+![](https://i.imgur.com/HTisMpC.jpg)
 
 If you have not already experienced this, the debugging process of programming can be traumatizing. Relentless as you may be, eventually, when something goes wrong and you seem to have tried everything, you will reach a point that makes you doubt your love for programming. If you go through this enough, the passion and excitement of coding get shadowed by fear, anxiety, and the perspective of a reliving the past trauma.
 
-[](https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/works-doesnt-work.jpg)
+![](https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/works-doesnt-work.jpg)
 
 Probably the worst side-effect of this process is its impact on scalability, collaboration, and productivity. Imagine going through this process. Your code finally works and passes all the tests; you are proud and satisfied of your achievement.
 
-[](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
+![](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
 
 And then this happens:
 
-[](https://i0.wp.com/www.developermemes.com/wp-content/uploads/2015/10/Now-That-You-Have-That-Feature-Done-I-Want-It-To-Do-Something-Else-Instead-Web-Developer-Meme.jpg?w=625)
+![](https://i0.wp.com/www.developermemes.com/wp-content/uploads/2015/10/Now-That-You-Have-That-Feature-Done-I-Want-It-To-Do-Something-Else-Instead-Web-Developer-Meme.jpg?w=625)
 
 It is likely you are thinking about how you will likely fix the door but break windows (pun somewhat intended). Or maybe simply
 
-[](http://s2.quickmeme.com/img/80/80ff000de170d180836519b11ef29b7814dc5d5b5b24abed94f5c3828075e811.jpg)
+![](http://s2.quickmeme.com/img/80/80ff000de170d180836519b11ef29b7814dc5d5b5b24abed94f5c3828075e811.jpg)
 
 This makes it inflexible to scale because of this mental obstacle coders have to go through. After a while of trying fixes in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable. Neither you nor anyone else wants to examine or read through it. This is why this process dampens collaboration and productivity.
 
