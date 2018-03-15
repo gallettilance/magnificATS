@@ -20,14 +20,4 @@ Look at Frodo - he never wants to go through this again. This is why this proces
 
 The goal of ATS is to restore your love of coding. My hope is that this talk/ repo will showcase how productive the ATS workflow can make you and why this methodology should be widely adopted. I hope it will inspire coders to try this methodology out for themselves and implement some of these features into mainstream languages.
 
-## Typechecker + Abstraction = Efficiency
-
-In traditional coding, the workflow is the following bottom up approach: write code -> test code -> enhance code -> test code ... etc. Although this process is certainly valid it provides the following issues:
-
-- You cannot be sure that all paths of your code have been tested (Correctness + Efficiency)
-
-- You may implement code you realize later is not needed (Productivity)
-
-The proposed solution is the following top-down approach. Solve the problem at the algorithm level and write the pseudo code in ATS. Declare all needed functions, assign all types involved, etc so to pass typechecking. Then recurse down to the helper functions you declared but have not yet implemented. This clearly solves problem 2 above because we know we are implementing only functions that are necessary to our code. Problem 1 is tricky but I will argue that with the help of types many bugs will be flushed out statically which will increase productivity (especially when testing is expensive such as in fields like Machine Learning or Crypto Currency).
-
 (to be continued)
