@@ -12,7 +12,11 @@ The worst side-effect of this process is probably its impact on scalability, col
 
 ![](https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/works-doesnt-work.jpg)
 
-After a while of trying bug-fixes in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable. Neither you nor anyone else wants to examine or read through it. THEN, your manager, colleague or friend comes up to you and says "Hey, why don't we add feature x and change feature y". You start thinking you will likely fix the door but break windows (pun somewhat intended). This makes it inflexible to scale because of this mental obstacle coders have to go through. 
+After a while of trying bug-fixes in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable. Neither you nor anyone else wants to examine or read through it. THEN, your manager, colleague or friend comes up to you and says "Hey, why don't we add feature x and change feature y".
+
+![](https://appslifestyle.files.wordpress.com/2011/05/image.png)
+
+You start thinking you will likely fix the door but break windows (pun somewhat intended). This makes it inflexible to scale because of this mental obstacle coders have to go through. 
 
 ![](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
 
