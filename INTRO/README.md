@@ -22,7 +22,7 @@ The goal of ATS is to restore your love of coding by reducing the need for debug
 
 ## How it works
 
-The most important question a coder must ask him/herself is "How do I know the code does what it is supposed to do?". The current mainstream view is that code passing all tests equates to correctness. From a mathematical and logical perspective, there is no way to cover an infinite set of paths with a finite set of tests. And, if you think of testing as evaluating a mathematical function, there is not guarantee that this function is bijective. Most of the time there is no way of identifying the origin of an error from the error itself.
+The most important question a coder must ask him/herself is "How do I know the code does what it is supposed to do?". The current mainstream view is that code passing all tests equates to correctness. From a mathematical and logical perspective, there is no way to cover an infinite set of paths with a finite set of tests. And, if you think of testing as evaluating a mathematical function, there is no guarantee that this function is bijective. Most of the time there is no way of identifying the origin of an error from the error itself.
 
 ![](https://i.imgur.com/e16qOEj.gif)
 
@@ -34,13 +34,15 @@ The goal of this talk is to outline a methodology and list good practices, that,
 
 ### The Typechecker
 
-The ATS perspective is to start vague and refine. Start with simple types: the domain of ints maps to the domain of ints via a given function. The typechecker proves that if an int is provided as input then an int is produced as output. Now you can refine the input and output types to match the specification of your function. For example you can define the input to be only ints multiples of 2 and the output to be only ints less than 0.
+The ATS perspective is to start vague and refine. Start with simple types: the domain of ints maps to the domain of ints via a given function. The typechecker proves that if an int is provided as input then an int is produced as output. Now you can refine the input and output types to match the specification of your function. For example you can define the input to be only ints multiples of 2 and the output to be only ints less than 0. You can statically check whether an index is out of bounds, or whether matrix dimensionality matches for a given multiplication. The refinement is limitless.
 
 (example coming soon)
 
 ### Top Down Approach
 
-When coding large projects, a top down approach is extremely productive in ATS. First, write the code for the function you need to implement. Do not disturb your workflow by implementing the helper functions on the fly. Once you have written your function and you are convinced the logic of your program is sound, simply declare the helper functions. At this point, typecheck your code, read the type errors closely, fix them, and typecheck again. Now that your code passes typechecking, use that same top down approach to tackle the helper functions that are declared but not implemented.
+When coding large projects, a top down approach is extremely productive in ATS.
+
+First, write the code for the function you need to implement. Do not disturb your workflow by implementing the helper functions on the fly. Once you have written your function and you are convinced the logic of your program is sound, simply declare the helper functions. At this point, typecheck your code, read the type errors closely, fix them, and typecheck again. Now that your code passes typechecking, use that same top down approach to tackle the helper functions that are declared but not implemented.
 
 The reason this method is effective is because a trip to the debugger, print statements in your code, unit tests, all require more time than simply typechecking. They all break your workflow and require you to have runnable code at every stage. This forces you to adopt a bottom up approach with no guarantees that the code you write will be needed later on. 
 
