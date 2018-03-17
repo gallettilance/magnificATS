@@ -32,7 +32,9 @@ The most important question a coder must ask him/herself is "How do I know the c
 
 ATS uses types and theorem proving to flush out bugs statically. Type errors always point back to the origin of the error and force you to examine the logic of your code instead of finding hacks. The idea is that type specification can be so precise that passing typechecking equates to correctness.
 
-The goal of this talk is to outline a methodology and list good practices, that, when combined with ATS, make for an extremely productive workflow.
+The goal of this talk is to outline a methodology and list good practices, that, when combined with ATS, make for an extremely productive workflow. Giving time back to the programmer allows for better focus on quality.
+
+![](http://www.cdotson.com/wp-content/uploads/2011/11/XKCD_The_General_Problem.jpg)
 
 ## Methodology
 
