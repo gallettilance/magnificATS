@@ -64,6 +64,6 @@ Lots of functions with small bodies > less functions with large bodies
 
 ATS needs space - accross files and folders.
 
-### Be precise and also vague
+### Stay vague until you need to be precise
 
 (to be continued)
