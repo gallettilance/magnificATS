@@ -42,8 +42,53 @@ The goal of this talk is to outline a methodology and list good practices, that,
 
 The ATS perspective is to start vague and refine. Start with simple types: the domain of ints maps to the domain of ints via a given function. The typechecker proves that if an int is provided as input then an int is produced as output. Now you can refine the input and output types to match the specification of your function. For example you can define the input to be only ints multiples of 2 and the output to be only ints less than 0. You can statically check whether an index is out of bounds, or whether matrix dimensionality matches for a given multiplication. The refinement is limitless.
 
-(example coming soon)
+There are many excellent tutorials about getting started with ATS and its syntax. The goal of the following (albeit somewhat pendantic) example is simply to illustrate the concepts and techniques mentioned above. Let's start with the factorial function.
 
+Deciding what the input and output types of a function will be is a bit like writing the introduction of an essay: you should write it after you have determined the overall logic and structure of the body. Here, the factorial function we want to implement takes as input a positive integer n and outputs the product of all strictly positive integer less than or equal to n. As such, we can declare our function fact as:
+  
+```ats
+extern
+fun
+fact(n : int) : int
+```
+
+And, we can implement it as such:
+
+```ats
+implement
+fact(n) =
+  if n = 1 then 1
+  else n * fact(n - 1)
+```
+
+This factorial function works for strictly positive integers. However, when n = 0 our factorial function will keep decreasing n without ever hitting the base case. This will give a stack overflow because of the recursion. A naive fix for this solution is the following:
+
+```ats
+implement
+fact(n) =
+  if n <= 1 then 1
+  else n * fact(n - 1)
+```
+
+This is incorrect because our factorial function should be undefined for values of n < 1. Outputting a default value as such is a hack and should be avoided as much as possible. When you test, later on, how your factorial function integrates with the rest of your code, if the overall output is a blue square instead of an orange circle, there is no way for you to know the cause was a negative value given to fact along the way. We want our program to stop the moment a negative value is given as input to fact. We can do the following:
+
+```ats
+implement
+fact(n) = let
+  val () = assertloc(n > 0)
+in
+  if n = 1 then 1
+  else n * fact(n - 1)
+end
+```
+
+The assertloc() function will raise an error if the statement n > 0 is false. At this point we have a working factorial function and we can start the refinement process.
+
+- [tail-recursion](http://ats-lang.sourceforge.net/EXAMPLE/EFFECTIVATS/loop-as-tailrec/main.html)
+
+- [dependent types](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#introduction-to-dependent-types)
+
+  
 ### Top Down Approach
 
 When coding large projects, a top down approach is extremely productive in ATS.
@@ -52,7 +97,7 @@ First, write the code for the function you need to implement. Do not disturb you
 
 The reason this method is effective is because a trip to the debugger, print statements in your code, unit tests, all require more time than simply typechecking. They all break your workflow and require you to have runnable code at every stage. This forces you to adopt a bottom up approach with no guarantees that the code you write will be needed later on. 
 
-(example coming soon)
+(video coming soon)
 
 ## Good Practices
 
