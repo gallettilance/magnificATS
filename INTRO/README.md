@@ -112,3 +112,7 @@ ATS needs space - accross files and folders.
 ### Stay vague until you need to be precise
 
 (to be continued)
+
+------
+
+Read the book [Introduction to Programming in ATS](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html)
