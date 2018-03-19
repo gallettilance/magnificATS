@@ -42,9 +42,9 @@ The goal of this talk is to outline a methodology and list good practices, that,
 
 The ATS perspective is to start vague and refine. Start with simple types: the domain of ints maps to the domain of ints via a given function. The typechecker proves that if an int is provided as input then an int is produced as output. Now you can refine the input and output types to match the specification of your function. For example you can define the input to be only ints multiples of 2 and the output to be only ints less than 0. You can statically check whether an index is out of bounds, or whether matrix dimensionality matches for a given multiplication. The refinement is limitless.
 
-There are many excellent tutorials about getting started with ATS and its syntax. The goal of the following (albeit somewhat pendantic) example is simply to illustrate the concepts and techniques mentioned above. Let's start with the factorial function.
+There are many excellent tutorials about getting started with ATS and its syntax. The goal of the following (albeit somewhat pendantic) example is simply to illustrate the concept mentioned above. Let's start with the factorial function.
 
-Deciding what the input and output types of a function will be is a bit like writing the introduction of an essay: you should write it after you have determined the overall logic and structure of the body. Here, the factorial function we want to implement takes as input a positive integer n and outputs the product of all strictly positive integer less than or equal to n. As such, we can declare our function fact as:
+Deciding what the input and output types of a function will be is a bit like writing the introduction of an essay: you should write it after you have determined the overall logic and structure of the body. Here, the factorial function we want to implement takes as input a positive integer n and outputs the product of all strictly positive integers less than or equal to n. As such, we can declare our function fact as:
   
 ```ats
 extern
