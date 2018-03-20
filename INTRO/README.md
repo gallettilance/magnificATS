@@ -118,12 +118,18 @@ We will use these combinators to solve Project Euler's [problem 18](https://proj
 
 The folding process will gives the following intermediate folded triangles:
 
+first:
+
 10 7  
 2 4 6  
 8 5 9 3  
 
+then:
+
 12 14 13  
 8 5 9 3  
+
+and finally:
 
 20 19 23 16  
 
