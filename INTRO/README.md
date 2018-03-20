@@ -38,6 +38,16 @@ The goal of this talk is to outline a methodology and list good practices, that,
 
 ## Methodology
 
+### Top Down Approach
+
+In general, but especially When coding large projects, a top down approach is extremely productive in ATS.
+
+First, write the code for the function you need to implement. Do not disturb your workflow by implementing the helper functions on the fly. Once you have written your function and you are convinced the logic of your program is sound, simply declare the helper functions. At this point, typecheck your code, read the type errors closely, fix them, and typecheck again. Now that your code passes typechecking, use that same top down approach to tackle the helper functions that are declared but not implemented.
+
+The reason this method is effective is because a trip to the debugger, print statements in your code, unit tests, all require more time than simply typechecking. They all break your workflow and require you to have runnable code at every stage. This forces you to adopt a bottom up approach with no guarantees that the code you write will be needed later on. 
+
+(video coming soon)
+
 ### The Typechecker
 
 The ATS perspective is to start vague and refine. Start with simple types: the domain of ints maps to the domain of ints via a given function. The typechecker proves that if an int is provided as input then an int is produced as output. Now you can refine the input and output types to match the specification of your function. For example you can define the input to be only ints multiples of 2 and the output to be only ints less than 0. You can statically check whether an index is out of bounds, or whether matrix dimensionality matches for a given multiplication. The refinement is limitless.
@@ -88,20 +98,101 @@ The assertloc() function will raise an error if the statement n > 0 is false. At
 
 - [dependent types](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#introduction-to-dependent-types)
 
-  
-### Top Down Approach
+### Combinator based programming
 
-When coding large projects, a top down approach is extremely productive in ATS.
+ATS has a large combinator library that can make your code elegant and readable. Some of these combinators include
 
-First, write the code for the function you need to implement. Do not disturb your workflow by implementing the helper functions on the fly. Once you have written your function and you are convinced the logic of your program is sound, simply declare the helper functions. At this point, typecheck your code, read the type errors closely, fix them, and typecheck again. Now that your code passes typechecking, use that same top down approach to tackle the helper functions that are declared but not implemented.
+- map
+- foldleft
+- map2
+- foldleft2
 
-The reason this method is effective is because a trip to the debugger, print statements in your code, unit tests, all require more time than simply typechecking. They all break your workflow and require you to have runnable code at every stage. This forces you to adopt a bottom up approach with no guarantees that the code you write will be needed later on. 
+Please take the time to get familiar with these functions before moving along.
 
-(video coming soon)
+We will use these combinators to solve Project Euler's [problem 18](https://projecteuler.net/problem=18). A Brute Force algorithm for this will be to explore all possible paths and find the maximum. However, as indicated in the problem statement, we can do better. After a short review of [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming), we notice we can fold the triangle onto itself. To illustrate this, let us take the smaller triangle from the problem's example:
 
+3
+7 4
+2 4 6
+8 5 9 3
+
+The folding process will gives the following intermediate folded triangles:
+
+10 7
+2 4 6
+8 5 9 3
+
+12 14 13
+8 5 9 3
+
+20 19 23 16
+
+Now that the triangle is fully folded, we simply take the max of the resulting list. In this case it's 23. Ok let's write some code.
+
+As before we need to think about how we will define our function. Here we want a function that takes in a triangle and returns an integer that represents the max path. As you may have guessed from the combinators above, we will represent a triangle as a list of lists. Our max_path function will have the following declaration:
+
+```ats
+extern
+fun
+max_path(triangle: list0(list0(int))): int
+```
+
+And the following implementation:
+
+```ats
+implement
+max_path(triangle) =
+  max
+  (
+    list0_foldleft<list0(int)>(triangle, nil0(), lam(res, line) => myfold(line, res))
+  )
+```
+
+Now, in order to typecheck this function we need to declare our helper functions:
+
+```ats
+extern
+fun
+myfold(xs: list0(int), ys: list0(int)): list0(int)
+
+extern
+fun
+max(xs: list0(int)): int 
+```
+
+Now that our function typechecks, we can implement our helper functions myfold() and max() as such:
+
+```ats
+implement
+myfold(xs, ys) = let
+  val f1 = list0_map2<int,int><int>(cons0(0, ys), xs, lam(y, x) => x + y)
+  val f2 = list0_map2<int,int><int>(list0_append(ys, list0_sing(0)), xs, lam(y, x) => x + y)
+in
+  list0_map2<int, int><int>(f1, f2, lam(x, y) => if x > y then x else y)
+end
+
+implement
+max(xs) = let
+  fun aux(xs: list0(int), m:int): int =
+    case+ xs of
+    | nil0() => m
+    | cons0(x, xs) => if x > m then aux(xs, x) else aux(xs, m)
+in
+  aux(xs, 0)
+end
+```
+    
 ## Good Practices
 
 ### Structure
+
+Here is an outline of the code templates I use to structure my ATS code.
+
+- [Single File Template](./template.dats)
+
+- [Folder Template](./TEMPLATE)
+
+### Functions and Combinators
 
 Lots of functions with small bodies > less functions with large bodies
 
