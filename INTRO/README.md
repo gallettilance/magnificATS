@@ -109,7 +109,7 @@ ATS has a large combinator library that can make your code elegant and readable.
 
 Please take the time to get familiar with these functions before moving along.
 
-We will use these combinators to solve Project Euler's [problem 18](https://projecteuler.net/problem=18). A Brute Force algorithm for this will be to explore all possible paths and find the maximum. However, as indicated in the problem statement, we can do better. After a short review of [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming), we notice we can fold the triangle onto itself. To illustrate this, let us take the smaller triangle from the problem's example:
+We will use these combinators to solve Project Euler's [problem 18](https://projecteuler.net/problem=18). A Brute Force algorithm for this will be to explore all possible paths and find the maximum. However, as indicated in the problem statement, we can do better. After a short review of [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming), we notice we can fold the triangle onto itself in such a way to obtain a list of the max paths to each leaf node of the triangle. Then we need only find the maximum of that list. To illustrate this, let us take the smaller triangle from the problem's example:
 
 3  
 7 4  
@@ -118,22 +118,22 @@ We will use these combinators to solve Project Euler's [problem 18](https://proj
 
 The folding process will gives the following intermediate folded triangles:
 
-first:
+first, we add 3 to 7 and 3 to 4.
 
 10 7  
 2 4 6  
 8 5 9 3  
 
-then:
+then we add 10 to 2 and 7 to 6. For 4, we can get to it from 10 and 7 so the max path to 4 will be max(10 + 4, 7 + 4) as such:
 
 12 14 13  
 8 5 9 3  
 
-and finally:
+and finally we get the following list:
 
 20 19 23 16  
 
-Now that the triangle is fully folded, we simply take the max of the resulting list. In this case it's 23. Ok let's write some code.
+Now that the triangle is fully folded, we simply take the max of the resulting list. In this case it's 23. Now that we are logically convinced of our methodology, let's write some code!
 
 As before we need to think about how we will define our function. Here we want a function that takes in a triangle and returns an integer that represents the max path. As you may have guessed from the combinators above, we will represent a triangle as a list of lists. Our max_path function will have the following declaration:
 
@@ -179,15 +179,20 @@ end
 
 implement
 max(xs) = let
+  val () = assertloc(list0_length(xs) > 0)
+
   fun aux(xs: list0(int), m:int): int =
     case+ xs of
     | nil0() => m
     | cons0(x, xs) => if x > m then aux(xs, x) else aux(xs, m)
 in
-  aux(xs, 0)
+  case- xs of
+  | cons0(x, xs) => aux(xs, x)
 end
 ```
-    
+
+Great! After typechecking, we can be fairly confident that this code does what we want it to do. If you would like to play with the code and/or test it out, you can do so online [here](http://www.ats-lang.org/SERVER/MYCODE/Patsoptaas_serve.php?mycode_url=https://pastebin.com/raw/m9EhX1BJ).
+
 ## Good Practices
 
 ### Structure
@@ -197,6 +202,8 @@ Here is an outline of the code templates I use to structure my ATS code.
 - [Single File Template](./template.dats)
 
 - [Folder Template](./TEMPLATE)
+
+The goal is to generate "boring" code. The idea is if your code is boring, it is straightforward and consistent - two crucial premises to readable and maintainable code. Following a template and a style you can conform to makes it easier to write "boring" code.
 
 ### Functions and Combinators
 
