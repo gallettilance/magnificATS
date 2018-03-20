@@ -102,28 +102,37 @@ The assertloc() function will raise an error if the statement n > 0 is false. At
 
 ATS has a large combinator library that can make your code elegant and readable. Some of these combinators include
 
-- map
-- foldleft
-- map2
-- foldleft2
+- [map](http://ats-lang.sourceforge.net/LIBRARY/libats/ML/SATS/DOCUGEN/HTML/list0.html#list0_map)
+- [foldleft](http://ats-lang.sourceforge.net/LIBRARY/libats/ML/SATS/DOCUGEN/HTML/list0.html#list0_foldleft)
+- [map2](http://ats-lang.sourceforge.net/LIBRARY/libats/ML/SATS/DOCUGEN/HTML/list0.html#list0_map2)
+- [foldleft2](http://ats-lang.sourceforge.net/LIBRARY/libats/ML/SATS/DOCUGEN/HTML/list0.html#list0_foldleft2)
 
 Please take the time to get familiar with these functions before moving along.
 
 We will use these combinators to solve Project Euler's [problem 18](https://projecteuler.net/problem=18). A Brute Force algorithm for this will be to explore all possible paths and find the maximum. However, as indicated in the problem statement, we can do better. After a short review of [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming), we notice we can fold the triangle onto itself. To illustrate this, let us take the smaller triangle from the problem's example:
 
 3
+
 7 4
+
 2 4 6
+
 8 5 9 3
 
 The folding process will gives the following intermediate folded triangles:
 
+
 10 7
+
 2 4 6
+
 8 5 9 3
 
+
 12 14 13
+
 8 5 9 3
+
 
 20 19 23 16
 
