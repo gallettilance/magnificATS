@@ -8,21 +8,21 @@ If you have not already experienced this, the debugging process of programming c
 
 ![](http://s2.quickmeme.com/img/80/80ff000de170d180836519b11ef29b7814dc5d5b5b24abed94f5c3828075e811.jpg)
 
-The worst side-effect of this process is probably its impact on scalability, collaboration, and productivity. Imagine going through this process; your code finally works and passes all the tests.
+The worst side-effect of this process is probably its impact on scalability, collaboration, and productivity. Imagine spending days trying to fix bugs in your code. After a while of trying in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable. Neither you nor anyone else wants to examine or read through it.
 
 ![](https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/works-doesnt-work.jpg)
 
-After a while of trying bug-fixes in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable. Neither you nor anyone else wants to examine or read through it. THEN, your manager, colleague or friend comes up to you and says "Hey, why don't we add feature x and change feature y".
+THEN, your manager, colleague or friend comes up to you and says "Hey, why don't we add feature x and change feature y".
 
-![](https://appslifestyle.files.wordpress.com/2011/05/image.png)
+![](https://vignette.wikia.nocookie.net/spongefan/images/2/23/Tulio_head_banging.gif/revision/latest?cb=20150612222916)
 
-You start thinking you will likely fix the door but break windows (pun somewhat intended). This makes it inflexible to scale because of this mental obstacle coders have to go through. 
+You start thinking you will likely fix the door but break windows (pun somewhat intended). This makes it inflexible to scale because of the mental obstacle coders have to go through. And in the end you've produced code that dampens collaboration and productivity. 
 
 ![](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
 
-Look at Frodo - he never wants to go through this again. This is why this process dampens collaboration and productivity.
+Look at Frodo - he never wants to go through this again. As our lives start depending more and more on software, what we code should be just as important as how we code it. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors, more high level languages. This is an incredible push toward productivity. However I will argue that it is the methodology that accompanies each language that truely distinguishes its productivity. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot. Ask yourself what methodology you use for each language you know. Does it work? If you are spending a lot of time debugging, the answer is probably no.
 
-The goal of ATS is to restore your love of coding by reducing the need for debugging and testing.
+The goal of ATS is to restore your love of coding by providing you with interesting language features combined with a methodology for reducing debugging and testing.
 
 ## How it works
 
