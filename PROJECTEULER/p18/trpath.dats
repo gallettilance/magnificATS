@@ -18,16 +18,12 @@ fun
 string2int(s: string): int
 
 extern
-fun 
-get_at_col(xs: list0(int), j: int): int
+fun
+max(xs: list0(int)): int
 
 extern
-fun 
-get_at_row(xss: list0(list0(int)), i: int): list0(int)
-
-extern
-fun 
-get_elem(xss: list0(list0(int)), i: int, j: int): int
+fun
+myfold(xs: list0(int), ys: list0(int)): list0(int)
 
 extern
 fun
@@ -63,68 +59,34 @@ in
 end
 
 implement
-get_at_col(xs, j) =
-case+ xs of
-| list0_nil() => 0 // additive identity
-| list0_cons(x, xs) => 
-     if j = 0 then x 
-     else 
-     (
-       if j < 0 then get_at_col(nil0(), j)
-       else get_at_col(xs, j - 1)
-     )
-        
-implement
-get_at_row(xss, i) =
-case+ xss of
-| list0_nil() => g0ofg1($list( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
-| list0_cons(xs, xss) => 
-    if i = 0 then xs 
-    else 
-    (
-      if i < 0 then get_at_row(nil0(), i) 
-      else get_at_row(xss, i - 1)
-    )
-    
-implement
-get_elem(xss, i, j) = get_at_col(get_at_row(xss, i), j)
-
-implement
-max_path(xss) = let
-  fun remove_last(xs: list0(int), res: list0(int)): list0(int) =
-    case- xs of
-    | cons0(x, xs) =>
-        case- xs of
-        | nil0() => res
-        | _ => remove_last(xs, cons0(x, res))
-
-  fun max(xs: list0(int), m:int): int =
-    case+ xs of
-    | nil0() => m
-    | cons0(x, xs) => if x > m then max(xs, x) else max(xs, m)
-  
-  fun myfold(xs: list0(int), ys: list0(int)): list0(int) = let
-      val f1 = list0_map2<int,int><int>(cons0(0, ys), xs, lam(y, x) => x + y)
-      val f2 = list0_map2<int,int><int>(list0_append(ys, list0_sing(0)), xs, lam(y, x) => x + y)
-      //val f1 = cons0(0, f1)
-      //val f2 = list0_append(f2, list0_sing(0))
-    in
-      list0_map2<int, int><int>(f1, f2, lam(x, y) => if x > y then x else y)
-    end
-
-  fun aux(xss: list0(list0(int)), ys: list0(int)): list0(int) =
-      case+ xss of
-      | nil0() => ys
-      | cons0(xs, xss) => (println!("ys = ", ys); aux(xss, myfold(xs, ys)))
+myfold(xs, ys) = let
+  val f1 = list0_map2<int,int><int>(cons0(0, ys), xs, lam(y, x) => x + y)
+  val f2 = list0_map2<int,int><int>(list0_append(ys, list0_sing(0)), xs, lam(y, x) => x + y)
 in
-  let 
-    val-cons0(xs1, xss1) = xss
-    val r = aux(xss1, xs1)
-    val () = println!("res = ", r)
-  in
-    max(r, 0)
-  end
+  list0_map2<int, int><int>(f1, f2, lam(x, y) => if x > y then x else y)
 end
+
+implement
+max(xs) = let
+  val () = assertloc(list0_length(xs) > 0)
+
+  fun aux(xs: list0(int), m:int): int =
+      case+ xs of
+      | nil0() => m
+      | cons0(x, xs) => if x > m then aux(xs, x) else aux(xs, m)
+
+in
+  case- xs of
+  | cons0(x, xs) => aux(xs, x)
+end
+
+implement
+max_path(xss) =
+max
+(
+  list0_foldleft<list0(int)>(xss, nil0(), lam(res, xs) => myfold(xs, res))
+)
+
 
 (* ****** ****** *)
 
