@@ -36,19 +36,10 @@ The goal of this talk is to outline a methodology and list good practices, that,
 
 ![](http://www.cdotson.com/wp-content/uploads/2011/11/XKCD_The_General_Problem.jpg)
 
+
 ## Methodology
 
-### Top Down Approach
-
-In general, but especially When coding large projects, a top down approach is extremely productive in ATS.
-
-First, write the code for the function you need to implement. Do not disturb your workflow by implementing the helper functions on the fly. Once you have written your function and you are convinced the logic of your program is sound, simply declare the helper functions. At this point, typecheck your code, read the type errors closely, fix them, and typecheck again. Now that your code passes typechecking, use that same top down approach to tackle the helper functions that are declared but not implemented.
-
-The reason this method is effective is because a trip to the debugger, print statements in your code, unit tests, all require more time than simply typechecking. They all break your workflow and require you to have runnable code at every stage. This forces you to adopt a bottom up approach with no guarantees that the code you write will be needed later on. 
-
-(video coming soon)
-
-### The Typechecker
+### Typechecking
 
 The ATS perspective is to start vague and refine. Start with simple types: the domain of ints maps to the domain of ints via a given function. The typechecker proves that if an int is provided as input then an int is produced as output. Now you can refine the input and output types to match the specification of your function. For example you can define the input to be only ints multiples of 2 and the output to be only ints less than 0. You can statically check whether an index is out of bounds, or whether matrix dimensionality matches for a given multiplication. The refinement is limitless.
 
@@ -98,7 +89,16 @@ The assertloc() function will raise an error if the statement n > 0 is false. At
 
 - [dependent types](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#introduction-to-dependent-types)
 
-### Combinator based programming
+
+### Top Down Approach
+
+In general, but especially When coding large projects, a top down approach is extremely productive in ATS.
+
+First, write the code for the function you need to implement. Do not disturb your workflow by implementing the helper functions on the fly. Once you have written your function and you are convinced the logic of your program is sound, simply declare the helper functions. At this point, typecheck your code, read the type errors closely, fix them, and typecheck again. Now that your code passes typechecking, use that same top down approach to tackle the helper functions that are declared but not implemented.
+
+The reason this method is effective is because a trip to the debugger, print statements in your code, unit tests, all require more time than simply typechecking. They all break your workflow and require you to have runnable code at every stage. This forces you to adopt a bottom up approach with no guarantees that the code you write will be needed later on. 
+
+#### Example using Combinators
 
 ATS has a large combinator library that can make your code elegant and readable. Some of these combinators include
 
@@ -192,6 +192,12 @@ end
 ```
 
 Great! After typechecking, we can be fairly confident that this code does what we want it to do. If you would like to play with the code and/or test it out, you can do so online [here](http://www.ats-lang.org/SERVER/MYCODE/Patsoptaas_serve.php?mycode_url=https://pastebin.com/raw/AKv2zznT).
+
+#### Another Example
+
+(coming soon)
+
+
 
 ## Good Practices
 
