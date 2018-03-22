@@ -206,7 +206,9 @@ Great! After typechecking, we can be fairly confident that this code does what w
 
 [Here](http://ats-lang.sourceforge.net/EXAMPLE/EFFECTIVATS/mergesort/main.html) you will find a walk through of the MergeSort algorithm implemented in the top down style.
 
-    > "The manner in which abstract types are supported in ATS is particularly designed under the guideline to maximally promote refinement-based programming. As I see it, the ability to make effective use of abstraction in controlling programming complexity is the most important characteristic of a top programmer, and the type system of ATS can greatly help one acquire this ability."
+   " The manner in which abstract types are supported in ATS is particularly designed under the guideline to maximally promote refinement-based programming. 
+     As I see it, the ability to make effective use of abstraction in controlling programming complexity is the most important characteristic of a top programmer, 
+     and the type system of ATS can greatly help one acquire this ability. "
 
 ## Good Practices
 
