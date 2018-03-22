@@ -95,7 +95,7 @@ The assertloc() function will raise an error if the statement n > 0 is false. At
 
 Now, we're getting somewhere
 
-![](https://media.giphy.com/media/rbO0f5lp2uOmk/giphy.gif)
+![](https://i.imgur.com/FoXXCC6.gif)
 
 
 
