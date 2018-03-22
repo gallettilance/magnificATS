@@ -20,9 +20,13 @@ You start thinking you will likely fix the door but break windows (pun somewhat 
 
 ![](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
 
-Look at Frodo - he never wants to go through this again. As our lives start depending more and more on software, what we code should be just as important as how we code it. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors, more high level languages. On the editor side, this is an incredible push toward productivity. However, on the language side, I will argue that it is the methodology that accompanies each language that truely distinguishes its productivity - not necessarily how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot. Ask yourself what methodology you use for each language you know. Does it work? If you are spending a lot of time debugging, the answer is probably no.
+Look at Frodo - he never wants to go through this again. As our lives start depending more and more on software, what we code should be just as important as how we code it. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors, more high level languages. On the editor side, this is an incredible push toward productivity. However, on the language side, I will argue that it is the methodology that accompanies each language that truely distinguishes its productivity - not necessarily how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot.
 
-The goal of ATS is to restore your love of coding by providing you with interesting language features combined with a methodology for reducing debugging and testing.
+But it is also important to distinguish the imprecise from the flexible. In some languages, functions are overloaded until they become extremely imprecise - it becomes extremely difficult to predict what the output will be for a given input. Think about applying the length function in Python to a 2D array. You can guess that will get the number of rows if you store your matrix in row major. But what if now you have a 3D array or an ND array. You can easily see that one dimensionality will be returned, the question is which one? This is because the length function has become imprecise.
+
+The solution to this is [higher-order functions](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#higher-order-functions). They allow for great flexibility, and, with the use of templates, for great precision as well.
+
+The goal of ATS is to restore your love of coding by providing you with interesting functional features combined with a methodology for reducing debugging and testing.
 
 ## How it works
 
