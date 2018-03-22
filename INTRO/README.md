@@ -20,7 +20,7 @@ You start thinking you will likely fix the door but break windows (pun somewhat 
 
 ![](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
 
-Look at Frodo - he never wants to go through this again. As our lives start depending more and more on software, what we code should be just as important as how we code it. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors, more high level languages. On the editor side, this is an incredible push toward productivity. However, on the language side, I will argue that it is the methodology that accompanies each language that truely distinguishes its productivity - not necessarily how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot.
+Look at Frodo - he never wants to go through this again. As our lives start depending more and more on software, what we code should be just as important as how we code it. Correctness matters. With enough time, we can have the luxury of focusing on quality. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors, more high level languages. On the editor side, this is an incredible push toward productivity. However, on the language side, I will argue that it is the methodology that accompanies each language that truely distinguishes its productivity - not necessarily how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot.
 
 But it is also important to distinguish the imprecise from the flexible. In some languages, functions are overloaded until they become extremely imprecise - it becomes extremely difficult to predict what the output will be for a given input. Think about applying the length function in Python to a 2D array. You can guess that the function will return the number of rows if you store your matrix in row major. But what if now you have a 3D array or an ND array. You can easily see that one dimensionality will be returned, the question is which one? This is because the length function has become imprecise.
 
@@ -202,11 +202,9 @@ end
 
 Great! After typechecking, we can be fairly confident that this code does what we want it to do. If you would like to play with the code and/or test it out, you can do so online [here](http://www.ats-lang.org/SERVER/MYCODE/Patsoptaas_serve.php?mycode_url=https://pastebin.com/raw/AKv2zznT).
 
-#### Another Example
+#### MergeSort
 
-(coming soon)
-
-
+[Here](http://ats-lang.sourceforge.net/EXAMPLE/EFFECTIVATS/mergesort/main.html) you will find a walk through of the MergeSort algorithm implemented in the top down style.
 
 ## Good Practices
 
