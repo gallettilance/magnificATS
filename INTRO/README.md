@@ -214,6 +214,8 @@ Great! After typechecking, we can be fairly confident that this code does what w
 
 ## Good Practices
 
+![](https://i.imgur.com/AU2XeIz.gif)
+
 ### Structure
 
 Here is an outline of the code templates I use to structure my ATS code.
