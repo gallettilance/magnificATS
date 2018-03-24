@@ -30,11 +30,11 @@ The goal of ATS is to restore your love of coding by providing you with interest
 
 ## How it works
 
-The most important question a coder must ask him/herself is "How do I know the code does what it is supposed to do?". The current mainstream view is that code passing all tests equates to correctness. From a mathematical and logical perspective, there is no way to cover an infinite set of paths with a finite set of tests. And, if you think of testing as evaluating a mathematical function, there is no guarantee that this function is bijective. Most of the time there is no way of identifying the origin of an error from the error itself.
+The goal is to uncover a methodology that allows for avoiding spaghetti code and buggy code from the get go so as to spend less time debugging and more time actually coding. We need to ask ourselves: "How do I know the code does what it is supposed to do?". One view is that code passing all tests equates to correctness. From a mathematical and logical perspective, there is no way to cover an infinite set of paths with a finite set of tests, and the more paths you cover, the more time costly this process becomes. If you think of testing as evaluating a mathematical function, there is no guarantee that this function is bijective - most of the time there is no way of identifying the origin of an error from the error itself.
 
 ![](https://i.imgur.com/e16qOEj.gif)
 
-ATS uses types and theorem proving to flush out bugs statically. Type errors always point back to the origin of the error and force you to examine the logic of your code instead of finding hacks. The idea is that type specification can be so precise that passing typechecking equates to correctness.
+ATS uses types and theorem proving to flush out bugs statically. Type errors always point back to the origin of the error and force you to examine the logic of your code instead of finding hacks. Consider that in order for an if statement to pass typechecking, both the then branch and the else branch need to typecheck. However, at runtime, you can only test one branch at a time. ATS uses the typechecker to its advantage. The idea is then to allow type specification to be so precise that passing typechecking equates to correctness.
 
 The goal of this talk is to outline a methodology and list good practices, that, when combined with ATS, make for an extremely productive workflow. Giving time back to the programmer allows for better focus on quality.
 
