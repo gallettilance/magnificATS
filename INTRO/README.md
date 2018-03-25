@@ -22,7 +22,7 @@ You start thinking you will likely fix the door but break windows (pun somewhat 
 
 Look at Frodo - he never wants to go through this again. As our lives start depending more and more on software, what we code should be just as important as how we code it. Correctness matters. With enough time, we can have the luxury of focusing on quality. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors, more high level languages. On the editor side, this is an incredible push toward productivity. However, on the language side, I will argue that it is the methodology that accompanies each language that truely distinguishes its productivity - not necessarily how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot.
 
-But it is also important to distinguish the imprecise from the flexible. In some languages, functions are overloaded until they become extremely imprecise - it becomes extremely difficult to predict what the output will be for a given input. Think about applying the length function in Python to a 2D array. You can guess that the function will return the number of rows if you store your matrix in row major. But what if now you have a 3D array or an ND array. You can easily see that one dimensionality will be returned, the question is which one? This is because the length function has become imprecise.
+But it is also important to distinguish the imprecise from the flexible. In some languages, functions are overloaded until they become extremely imprecise - it becomes extremely difficult to predict what the output will be for a given input. Think about applying the length function in Python to a 2D array. You can guess that the function will return the number of rows if you store your matrix in row major. But what if now you have a 3D array or an ND array. You can easily see that one dimension will be returned, the question is which one? This is because the length function has become imprecise.
 
 The solution to this is [higher-order functions](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#higher-order-functions). They allow for great flexibility, and, with the use of templates, for great precision as well.
 
@@ -39,7 +39,6 @@ ATS uses types and theorem proving to flush out bugs statically. Type errors alw
 The goal of this talk is to outline a methodology and list good practices, that, when combined with ATS, make for an extremely productive workflow. Giving time back to the programmer allows for better focus on quality.
 
 ![](http://www.cdotson.com/wp-content/uploads/2011/11/XKCD_The_General_Problem.jpg)
-
 
 ## Methodology
 
@@ -101,7 +100,7 @@ Now, we're getting somewhere
 
 ### Top Down Approach
 
-In general, but especially When coding large projects, a top down approach is extremely productive in ATS.
+In general, especially when coding large projects, a top down approach is extremely productive in ATS.
 
 First, write the code for the function you need to implement. Do not disturb your workflow by implementing the helper functions on the fly. Once you have written your function and you are convinced the logic of your program is sound, simply declare the helper functions. At this point, typecheck your code, read the type errors closely, fix them, and typecheck again. Now that your code passes typechecking, use that same top down approach to tackle the helper functions that are declared but not implemented.
 
@@ -211,6 +210,14 @@ Great! After typechecking, we can be fairly confident that this code does what w
       the ability to make effective use of abstraction in controlling programming complexity 
       is the most important characteristic of a top programmer, and the type system of ATS 
       can greatly help one acquire this ability. "
+
+### Functional Programming
+
+    "Functional Programs are mathematical expressions that are evaluated and reasoned 
+     about much like ordinary mathematical functions. As a result, these expressions 
+     are simple to analyze and compose for large-scale programs"
+
+Please watch the following video about [Why Functional Programming Matters](https://www.youtube.com/watch?v=oB8jN68KGcU). ATS has many functional programming features that make for productive and effective coding. For me it is one of those languages where I almost always get that AH-HA moment of your complex code running on the first try.
 
 ## Good Practices
 
