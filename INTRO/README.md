@@ -1,4 +1,4 @@
-# Intro to ATS - or how to code productively
+# Intro to Functional Programming - or how to code productively
 
 ## Why you should care
 
@@ -32,9 +32,9 @@ The goal is to uncover a methodology that allows for avoiding spaghetti code and
 
 ![](https://i.imgur.com/e16qOEj.gif)
 
-ATS uses types and theorem proving to flush out bugs statically. Type errors always point back to the origin of the error and force you to examine the logic of your code instead of finding hacks. Consider that in order for an if statement to pass typechecking, both the then branch and the else branch need to typecheck. However, at runtime, you can only test one branch at a time. ATS uses the typechecker to its advantage. The idea is then to allow type specification to be so precise that passing typechecking equates to correctness.
+ATS uses types and theorem proving to flush out bugs statically. Type errors always point back to the origin of the error and force you to examine the logic of your code instead of finding hacks. Consider that in order for an if statement to pass typechecking, both the then branch and the else branch need to typecheck. However, at runtime, you can only test one branch at a time. In the context of Machine Learning, runtime tests can be extremely expensive, and in the context of say crypto-currency, relying solely on testing for validation can be extremely risky. ATS uses types to its advantage in that the coverage of types is total while its precision is limited. So it encourages the programmer to increase the precision of the types he/she usees. The idea is then to allow type specification to be so precise that passing typechecking equates to correctness.
 
-But we need to accompany these language constructs with a methodology so as to use these constructs productively. The methodology that accompanies each language is truely what distinguishes one language's productivity from another - not how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot.
+But this kind of precision can negatively affect productivity if used incorrectly. So we need to accompany these language features with a method to use these constructs productively. The methodology that accompanies each language is truely what distinguishes one language's productivity from another - not how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot.
 
 The goal of this talk is to outline a methodology and list good practices, that, when combined with ATS, make for an extremely productive workflow. Giving time back to the programmer allows for better focus on quality.
 
@@ -46,7 +46,7 @@ The goal of this talk is to outline a methodology and list good practices, that,
 
 The ATS perspective is to start vague and refine. Start with simple types: the domain of ints maps to the domain of ints via a given function. The typechecker proves that if an int is provided as input then an int is produced as output. Now you can refine the input and output types to match the specification of your function. For example you can define the input to be only ints multiples of 2 and the output to be only ints less than 0. You can statically check whether an index is out of bounds, or whether matrix dimensionality matches for a given multiplication. The refinement is limitless.
 
-There are many excellent tutorials about getting started with ATS and its syntax. The goal of the following (albeit somewhat pendantic) example is simply to illustrate the concept mentioned above. Let's start with the factorial function.
+There are many excellent tutorials about getting started with ATS and its syntax. The goal of the following (albeit somewhat pendantic) example is simply to illustrate the concept mentioned above - not necessarily to re-iterate the ATS tutorial. Let's start with the factorial function.
 
 Deciding what the input and output types of a function will be is a bit like writing the introduction of an essay: you should write it after you have determined the overall logic and structure of the body. Here, the factorial function we want to implement takes as input a positive integer n and outputs the product of all strictly positive integers less than or equal to n. As such, we can declare our function fact as:
   
