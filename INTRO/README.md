@@ -4,11 +4,11 @@
 
 ![](https://i.imgur.com/HTisMpC.jpg)
 
-If you have not already experienced this, the debugging process of programming can be traumatizing. Relentless as you may be, eventually, when something goes wrong and you seem to have tried everything, you will reach a point that makes you doubt your love for programming. If you go through this enough, the passion and excitement of coding get shadowed by fear, anxiety, and the perspective of a reliving the past trauma.
+If you have not already experienced this, the debugging process of programming can be traumatizing. Relentless as you may be, eventually, when something goes wrong and you seem to have tried everything, you will reach a point that makes you doubt your love for programming. If you go through this enough, the passion and excitement of coding get shadowed by fear, anxiety, and the perspective of a reliving the past trauma of endless debugging.
 
 ![](http://s2.quickmeme.com/img/80/80ff000de170d180836519b11ef29b7814dc5d5b5b24abed94f5c3828075e811.jpg)
 
-The worst side-effect of this process is probably its impact on scalability, collaboration, and productivity. Imagine spending days trying to fix bugs in your code. After a while of trying in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable. Neither you nor anyone else wants to examine or read through it.
+This is a by-product of a lack of coding methodology. The worst side-effect of which is probably the impact on scalability, collaboration, and productivity. Let me walk you through the scenario. You are assigned a task and start coding. Once you've reached a point in your coding were you are ready to start testing, you uncover a few bugs. You spend some hours fixing those bugs and get back to coding. Repeat this until you have a bug that you spend days trying to fix. After a while of trying in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable.
 
 ![](https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/works-doesnt-work.jpg)
 
@@ -16,15 +16,13 @@ THEN, your manager, colleague or friend comes up to you and says "Hey, why don't
 
 ![](https://vignette.wikia.nocookie.net/spongefan/images/2/23/Tulio_head_banging.gif/revision/latest?cb=20150612222916)
 
-You start thinking you will likely fix the door but break windows (pun somewhat intended). This makes it inflexible to scale because of the mental obstacle coders have to go through. And in the end you've produced code that dampens collaboration and productivity. 
+You start thinking you will likely fix the door but break windows (pun somewhat intended). This makes it inflexible to scale because of the mental obstacle coders have to go through. And in the end you've produced code that dampens collaboration and productivity because neither you nor anyone else wants to examine or read through it.
 
 ![](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
 
-Look at Frodo - he never wants to go through this again. As our lives start depending more and more on software, what we code should be just as important as how we code it. Correctness matters. With enough time, we can have the luxury of focusing on quality. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors, more high level languages. On the editor side, this is an incredible push toward productivity. However, on the language side, I will argue that it is the methodology that accompanies each language that truely distinguishes its productivity - not necessarily how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot.
+Look at Frodo - he never wants to go through this again. As our lives start depending more and more on software, what we code should be just as important as how we code it. Correctness matters. With enough time, we can have the luxury of focusing on quality. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors. This is an incredible push toward productivity.
 
-But it is also important to distinguish the imprecise from the flexible. In some languages, functions are overloaded until they become extremely imprecise - it becomes extremely difficult to predict what the output will be for a given input. Think about applying the length function in Python to a 2D array. You can guess that the function will return the number of rows if you store your matrix in row major. But what if now you have a 3D array or an ND array. You can easily see that one dimension will be returned, the question is which one? This is because the length function has become imprecise.
-
-The solution to this is [higher-order functions](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#higher-order-functions). They allow for great flexibility, and, with the use of templates, for great precision as well.
+However, this does not directly solve the issue - we need to avoid spaghetti code and buggy code from the start. We need to apply the same mathematical rigor with which we analyze alogorithms to the way we code. In short we need functional programming which is a way of reasoning about programs like mathematical expressions, so as to analyze and compose them to build larger and better software.
 
 The goal of ATS is to restore your love of coding by providing you with interesting functional features combined with a methodology for reducing debugging and testing.
 
@@ -35,6 +33,8 @@ The goal is to uncover a methodology that allows for avoiding spaghetti code and
 ![](https://i.imgur.com/e16qOEj.gif)
 
 ATS uses types and theorem proving to flush out bugs statically. Type errors always point back to the origin of the error and force you to examine the logic of your code instead of finding hacks. Consider that in order for an if statement to pass typechecking, both the then branch and the else branch need to typecheck. However, at runtime, you can only test one branch at a time. ATS uses the typechecker to its advantage. The idea is then to allow type specification to be so precise that passing typechecking equates to correctness.
+
+But we need to accompany these language constructs with a methodology so as to use these constructs productively. The methodology that accompanies each language is truely what distinguishes one language's productivity from another - not how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot.
 
 The goal of this talk is to outline a methodology and list good practices, that, when combined with ATS, make for an extremely productive workflow. Giving time back to the programmer allows for better focus on quality.
 
@@ -107,6 +107,12 @@ First, write the code for the function you need to implement. Do not disturb you
 The reason this method is effective is because a trip to the debugger, print statements in your code, unit tests, all require more time than simply typechecking. They all break your workflow and require you to have runnable code at every stage. This forces you to adopt a bottom up approach with no guarantees that the code you write will be needed later on. 
 
 #### Example using Combinators
+
+It is important to distinguish the imprecise from the flexible. In some languages, functions are overloaded until they become extremely imprecise - it becomes extremely difficult to predict what the output will be for a given input. Think about applying the length function in Python to a 2D array. You can guess that the function will return the number of rows if you store your matrix in row major. But what if now you have a 3D array or an ND array. You can easily see that one dimension will be returned, the question is which one? This is because the length function has become imprecise.
+
+But some languages require you to be so precise about types and functions, it seems impossible to write code that can be reused in a different context. What I mean here is could be creating a different length function for every different object you encounter. Thus repeating a lot of code and being unproductive. So how can we consolidate precision and flexibility?
+
+The solution is [higher-order functions](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#higher-order-functions). They allow for great flexibility, and, with the use of templates, for great precision as well. They also provide a great foundation for mathematical/ formal reasoning about your program.
 
 ATS has a large combinator library that can make your code elegant and readable. Some of these combinators include
 
