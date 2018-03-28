@@ -8,7 +8,9 @@ If you have not already experienced this, the debugging process of programming c
 
 ![](http://s2.quickmeme.com/img/80/80ff000de170d180836519b11ef29b7814dc5d5b5b24abed94f5c3828075e811.jpg)
 
-This is a by-product of a lack of coding methodology. The worst side-effect of which is probably the impact on scalability, collaboration, and productivity. Let me walk you through the scenario. You are assigned a task and start coding. Once you've reached a point in your coding were you are ready to start testing, you uncover a few bugs. You spend some hours fixing those bugs and get back to coding. Repeat this until you have a bug that you spend days trying to fix. After a while of trying in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable.
+This is a by-product of a lack of coding methodology. The worst side-effect of which is probably the impact on scalability, collaboration, and productivity. Let me walk you through the scenario.
+
+You are assigned a task. You start coding until you've reached a point where you feel you are ready to start testing. You discover a few bugs and spend some hours fixing these. You get back to coding and repeat this until you have a bug that you spend days trying to fix. After a while of trying in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable.
 
 ![](https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/works-doesnt-work.jpg)
 
@@ -20,9 +22,9 @@ You start thinking you will likely fix the door but break windows (pun somewhat 
 
 ![](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
 
-Look at Frodo - he never wants to go through this again. As our lives start depending more and more on software, what we code should be just as important as how we code it. Correctness matters. With enough time, we can have the luxury of focusing on quality. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors. This is an incredible push toward productivity.
+Look at Frodo - he never wants to go through this again. Complexity is a programmer's worst enemy, and as our lives start depending more and more on software, what we code should be just as important as how we code it. Obviously, with enough time, we can have the luxury of focusing on quality. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors. This is an incredible push toward productivity.
 
-However, this does not directly solve the issue - we need to avoid spaghetti code and buggy code from the start. We need to apply the same mathematical rigor with which we analyze alogorithms to the way we code. In short we need functional programming which is a way of reasoning about programs like mathematical expressions, so as to analyze and compose them to build larger and better software.
+However, this does not directly solve the issue - we need to avoid spaghetti code and buggy code from the start. We need to apply the same mathematical rigor with which we analyze alogorithms to the way we code. In short we need functional programming which is a way of reasoning about programs like mathematical expressions, so as to analyze and compose them to propagate this reasoning into larger software.
 
 The goal of ATS is to restore your love of coding by providing you with interesting functional features combined with a methodology for reducing debugging and testing.
 
