@@ -75,8 +75,7 @@ where
   val () = println!("r1774 = ", numeral_eval(r1774))
   val () = println!("r1954 = ", numeral_eval(r1954))
   val () = println!("r1990 = ", numeral_eval(r1990))
-  val () = println!("r2014 = ", numeral_eval(r2014))
-  
+  val () = println!("r2014 = ", numeral_eval(r2014))  
 }
 
 (* ****** ****** *)
