@@ -88,7 +88,7 @@ in
 end
 ```
 
-The assertloc() function will raise an error if the statement n > 0 is false. At this point we have a working factorial function and we can start the refinement process.
+The assertloc() function will raise an error if the statement n > 0 is false. At this point we have a working factorial function and we can start the refinement process. Please check out the following links before proceeding:
 
 - [tail-recursion](http://ats-lang.sourceforge.net/EXAMPLE/EFFECTIVATS/loop-as-tailrec/main.html)
 
