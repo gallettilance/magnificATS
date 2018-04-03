@@ -78,4 +78,4 @@ where
 
 (* ****** ****** *)
 
-(* end of [fibopf.dats] *)
+(* end of [factpf.dats] *)

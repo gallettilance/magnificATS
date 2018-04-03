@@ -8,37 +8,37 @@ If you have not already experienced this, the debugging process of programming c
 
 ![](http://s2.quickmeme.com/img/80/80ff000de170d180836519b11ef29b7814dc5d5b5b24abed94f5c3828075e811.jpg)
 
-This is a by-product of a lack of coding methodology. The worst side-effect of which is probably the impact on scalability, collaboration, and productivity. Let me walk you through the scenario.
+The goal of ATS is to restore your love of coding by providing you with interesting functional features combined with a methodology for reducing debugging and testing. But to understand why this works we need to take a step back and examine the current state of our coding process. Consider the following naive approach to programming which I had adopted:
 
-You are assigned a task. You start coding until you've reached a point where you feel you are ready to start testing. You discover a few bugs and spend some hours fixing these. You get back to coding and repeat this until you have a bug that you spend days trying to fix. After a while of trying in vain, instinct kicks in and it is solely about survival - man vs machine. In this battle the means justify the ends and your code gets cluttered with hacks and other small patches that, accumulated, make your code unmaintainable.
+I was assigned a task. I started coding until I reached a point where I got this terrible feeling that I ought to test what I've written so far so as to avoid even lengthier debugging later on. I would then discover a few bugs and battle with my code in order to pass whatever unit tests I could think of. In this battle the means justified the ends and my code got cluttered with hacks and other small patches that, accumulated, made my code unmaintainable.
 
 ![](https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/works-doesnt-work.jpg)
 
-THEN, your manager, colleague or friend comes up to you and says "Hey, why don't we add feature x and change feature y".
+I soon realized that it is only THEN that your manager, colleague or friend comes up to you and says "Hey, why don't we add feature x and change feature y".
 
 ![](https://vignette.wikia.nocookie.net/spongefan/images/2/23/Tulio_head_banging.gif/revision/latest?cb=20150612222916)
 
-You start thinking you will likely fix the door but break windows (pun somewhat intended). This makes it inflexible to scale because of the mental obstacle coders have to go through. And in the end you've produced code that dampens collaboration and productivity because neither you nor anyone else wants to examine or read through it.
+Clearly, this process has a terrible impact on one's own productivity and love for coding. But it also affects the people you work with and the users of your software. Every coder contributing to this code will have to go through incredible mental acrobatics in order to "add feature x and change feature y" because neither you nor anyone else wants to examine or read through your code. In turn this drastically dampens the user's experience.
 
-![](http://s2.quickmeme.com/img/32/3231c171a34d1b88ab1768b1ba5ef9f0e9b035f523e197f2b99f83b7856826e3.jpg)
+So complexity is a programmer's worst enemy, and as our lives start depending more and more on software, what we code should be just as important as how we code it. Obviously, with enough time, we can have the luxury of focusing on quality. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors. This is an incredible push toward productivity.
 
-Look at Frodo - he never wants to go through this again. Complexity is a programmer's worst enemy, and as our lives start depending more and more on software, what we code should be just as important as how we code it. Obviously, with enough time, we can have the luxury of focusing on quality. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors. This is an incredible push toward productivity.
-
-However, this does not directly solve the issue - we need to avoid spaghetti code and buggy code from the start. We need to apply the same mathematical rigor with which we analyze alogorithms to the way we code. In short we need functional programming which is a way of reasoning about programs like mathematical expressions, so as to analyze and compose them to propagate this reasoning into larger software.
-
-The goal of ATS is to restore your love of coding by providing you with interesting functional features combined with a methodology for reducing debugging and testing.
+However, this does not directly solve the issue - we need to avoid spaghetti, buggy code from the start. We need to apply the same mathematical rigor with which we analyze algorithms to the way we code. In short, we need functional programming which is a way of reasoning about programs like mathematical expressions, so as to analyze and compose them to propagate this reasoning into larger software.
 
 ## How it works
 
-The goal is to uncover a methodology that allows for avoiding spaghetti code and buggy code from the get go so as to spend less time debugging and more time actually coding. We need to ask ourselves: "How do I know the code does what it is supposed to do?". One view is that code passing all tests equates to correctness. From a mathematical and logical perspective, there is no way to cover an infinite set of paths with a finite set of tests, and the more paths you cover, the more time costly this process becomes. If you think of testing as evaluating a mathematical function, there is no guarantee that this function is bijective - most of the time there is no way of identifying the origin of an error from the error itself.
+The goal is to uncover a methodology that allows for avoiding spaghetti code and buggy code from the get go so as to spend less time debugging and more time actually coding. For this, we need to ask ourselves: "How do I know the code does what it is supposed to do?".
+
+One view is that code passing all tests equates to correctness. From a mathematical and logical perspective, there is no way to cover an infinite set of paths with a finite set of tests, and the more paths you cover, the more time costly this process becomes. If you think of testing as evaluating a mathematical function, there is no guarantee that this function is bijective - most of the time there is no way of identifying the origin of an error from the error itself.
 
 ![](https://i.imgur.com/e16qOEj.gif)
 
-ATS uses types and theorem proving to flush out bugs statically. Type errors always point back to the origin of the error and force you to examine the logic of your code instead of finding hacks. Consider that in order for an if statement to pass typechecking, both the then branch and the else branch need to typecheck. However, at runtime, you can only test one branch at a time. In the context of Machine Learning, runtime tests can be extremely expensive, and in the context of say crypto-currency, relying solely on testing for validation can be extremely risky. ATS uses types to its advantage in that the coverage of types is total while its precision is limited. So it encourages the programmer to increase the precision of the types he/she usees. The idea is then to allow type specification to be so precise that passing typechecking equates to correctness.
+ATS uses types and theorem proving to flush out bugs statically (i.e. without having to run the code). In the context of Machine Learning, runtime tests can be extremely expensive, and in the context of say crypto-currency, relying solely on testing for validation can be extremely risky. Type errors always point back to the origin of the error and force you to examine the logic of your code instead of finding hacks.
+
+Consider that in order for an if statement to pass typechecking, both the then branch and the else branch need to typecheck. However, at runtime, you can only test one branch at a time. ATS uses types to its advantage in that the coverage of types is total while its precision is, in general, limited. So it encourages the programmer to refine (increase the precision of) the types he/she usees. The idea is then to allow type specification to be so precise that passing typechecking equates to correctness.
 
 But this kind of precision can negatively affect productivity if used incorrectly. So we need to accompany these language features with a method to use these constructs productively. The methodology that accompanies each language is truely what distinguishes one language's productivity from another - not how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot.
 
-The goal of this talk is to outline a methodology and list good practices, that, when combined with ATS, make for an extremely productive workflow. Giving time back to the programmer allows for better focus on quality.
+The goal of this talk is to outline a methodology and list good practices, that, when combined with ATS, make for an extremely productive workflow. Giving time back to the programmer allows for better focus on quality. It will be up to the reader to decide how to translate this methodology into the constructs of his/her language of choice.
 
 ![](http://www.cdotson.com/wp-content/uploads/2011/11/XKCD_The_General_Problem.jpg)
 
