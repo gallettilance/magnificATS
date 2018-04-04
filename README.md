@@ -2,6 +2,11 @@
 
 A collection of various programming exercises I have done in ATS.
 
+
+### INTRO
+
+[INTRO](./INTRO) contains an article I wrote about ATS and Functional Programming.
+
 ### EXPRESSION
 
 [EXPRESSION](./EXPRESSSION) provides a way of creating and manipulating expressions involving a single variable X (polynomials in X). These expressions can be evaluated for a given X value, simplified given identity and distribution rules, and compared to other expressions for equality.
