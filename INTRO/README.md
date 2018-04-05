@@ -153,7 +153,7 @@ and finally we get the following list:
 
 Each of these number represents the max path to that node. So now that the triangle is fully folded, we simply take the max of the resulting list to get the overall max path. In this case it's 23. Now that we are logically convinced of our methodology, let's write some code!
 
-As before we need to think about how we will define our function. Here we want a function that takes in a triangle '''ats tr ''' and returns an integer that represents the max path. As you may have guessed from the combinators above, we will represent a triangle as a list of lists. Our max_path function will have the following declaration:
+As before we need to think about how we will define our function. Here we want a function that takes in a triangle ``` tr ``` and returns an integer that represents the max path. As you may have guessed from the combinators above, we will represent a triangle as a list of lists. Our max_path function will have the following declaration:
 
 ```ats
 typedef layer = list0(int)
@@ -164,14 +164,14 @@ fun
 max_path(tr: triangle): int
 ```
 
-The ```ats typedef ``` above simply gives a name to a type. Here, we define a type called triangle which we choose for now to be a list of layers where a layer is a list of ints (so a triangle is a list of lists of ints). We can implementation max_path in the following way:
+The ``` typedef ``` above simply gives a name to a type. Here, we define a type called triangle which we choose for now to be a list of layers where a layer is a list of ints (so a triangle is a list of lists of ints). We can implementation max_path in the following way:
 
 ```ats
 implement
 max_path(tr) =
   max
   (
-    list0_foldleft<list0(int)>(tr, nil0(), lam(res, line) => myfold(line, res))
+    list0_foldleft<layer>(tr, nil0(), lam(res, line) => myfold(line, res))
   )
 ```
 
@@ -180,11 +180,11 @@ Now, in order to typecheck this function we need to declare our helper functions
 ```ats
 extern
 fun
-myfold(xs: list0(int), ys: list0(int)): list0(int)
+myfold(xs: layer, ys: layer): layer
 
 extern
 fun
-max(xs: list0(int)): int 
+max(xs: layer): int 
 ```
 
 Now that our function typechecks, we can implement our helper functions myfold() and max() as such:
