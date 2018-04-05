@@ -164,7 +164,7 @@ fun
 max_path(tr: triangle): int
 ```
 
-The ``` typedef ``` above simply gives a name to a type. Here, we define a type called triangle which we choose for now to be a list of layers where a layer is a list of ints (so a triangle is a list of lists of ints). We can implementation max_path in the following way:
+The ``` typedef ``` above simply gives a name to a type. Here, we define a type called triangle which we choose for now to be a list of layers where a layer is a list of ints (so a triangle is a list of lists of ints). We can implement max_path in the following way:
 
 ```ats
 implement
