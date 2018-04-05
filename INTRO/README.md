@@ -14,21 +14,21 @@ I was assigned a task. I started coding until I reached a point where I got this
 
 ![](https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/works-doesnt-work.jpg)
 
-I soon realized that it is only THEN that your manager, colleague or friend comes up to you and says "Hey, why don't we add feature x and change feature y".
+I would repeat this process - every iteration worse than the previous - until I had something workable that somewhat sort of solved a very small subset of the problem. I soon realized that it is only THEN that your manager, colleague or friend comes up to you and says "Hey, why don't we add feature x and change feature y".
 
 ![](https://vignette.wikia.nocookie.net/spongefan/images/2/23/Tulio_head_banging.gif/revision/latest?cb=20150612222916)
 
-Clearly, this process has a terrible impact on one's own productivity and love for coding. But it also affects the people you work with and the users of your software. Every coder contributing to this code will have to go through incredible mental acrobatics in order to "add feature x and change feature y" because neither you nor anyone else wants to examine or read through your code. In turn this drastically dampens the user's experience.
+At this point, there is really no feasible alternative to just simply starting from scratch. Clearly, this process has a terrible impact on one's own productivity and love for coding. But it also affects the people you work with and the users of your software. Every coder contributing to this code will have to go through incredible mental acrobatics in order to "add feature x and change feature y" because neither you nor anyone else wants to examine or read through your code. In turn this drastically dampens the user's experience because software evolution is too slow.
 
-So complexity is a programmer's worst enemy, and as our lives start depending more and more on software, what we code should be just as important as how we code it. Obviously, with enough time, we can have the luxury of focusing on quality. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors. This is an incredible push toward productivity.
+Complexity is a programmer's worst enemy, and as our lives start depending more and more on software, what we code should be just as important as how we code it. Obviously, with enough time, we can have the luxury of focusing on quality. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors - which is an incredible push toward productivity.
 
 However, this does not directly solve the issue - we need to avoid spaghetti, buggy code from the start. We need to apply the same mathematical rigor with which we analyze algorithms to the way we code. In short, we need functional programming which is a way of reasoning about programs like mathematical expressions, so as to analyze and compose them to propagate this reasoning into larger software.
 
 ## How it works
 
-The goal is to uncover a methodology that allows for avoiding spaghetti code and buggy code from the get go so as to spend less time debugging and more time actually coding. For this, we need to ask ourselves: "How do I know the code does what it is supposed to do?".
+The goal is to uncover a methodology that allows a coder to spend less time debugging and more time focusing on quality. For this, we need to ask ourselves: "How do I know the code does what it is supposed to do?".
 
-One view is that code passing all tests equates to correctness. From a mathematical and logical perspective, there is no way to cover an infinite set of paths with a finite set of tests, and the more paths you cover, the more time costly this process becomes. If you think of testing as evaluating a mathematical function, there is no guarantee that this function is bijective - most of the time there is no way of identifying the origin of an error from the error itself.
+One view is that code passing all tests equates to correctness. From a mathematical and logical perspective, there is no way to cover an infinite set of paths with a finite set of tests, and the more paths you cover, the more time costly this process becomes. So you can't even make a mathematical statement like "in the limit...". Further, if you think of testing as evaluating a mathematical function, there is no guarantee that this function is bijective - most of the time there is no way of identifying the origin of an error from the error itself.
 
 ![](https://i.imgur.com/e16qOEj.gif)
 
@@ -63,32 +63,32 @@ And, we can implement it as such:
 ```ats
 implement
 fact(n) =
-  if n = 1 then 1
+  if n = 0 then 1
   else n * fact(n - 1)
 ```
 
-This factorial function works for strictly positive integers. However, when n = 0 our factorial function will keep decreasing n without ever hitting the base case. This will give a stack overflow because of the recursion. A naive fix for this solution is the following:
+This factorial function works for positive integers. However, when n < 0 our factorial function will keep decreasing n without ever hitting the base case. This will give a stack overflow because of the recursion. A naive fix for this solution is the following:
 
 ```ats
 implement
 fact(n) =
-  if n <= 1 then 1
+  if n <= 0 then 1
   else n * fact(n - 1)
 ```
 
-This is incorrect because our factorial function should be undefined for values of n < 1. Outputting a default value as such is a hack and should be avoided as much as possible. When you test, later on, how your factorial function integrates with the rest of your code, if the overall output is a blue square instead of an orange circle, there is no way for you to know the cause was a negative value given to fact along the way. We want our program to stop the moment a negative value is given as input to fact. We can do the following:
+This is incorrect because our factorial function should be undefined for values of n < 0. Outputting a default value as such is a hack and should be avoided as much as possible. When you test, later on, how your factorial function integrates with the rest of your code, if the overall output is a blue square instead of an orange circle, there is no way for you to know the cause was a negative value given to fact along the way. We want our program to stop the moment a negative value is given as input to fact. We can do the following:
 
 ```ats
 implement
 fact(n) = let
-  val () = assertloc(n > 0)
+  val () = assertloc(n >= 0)
 in
-  if n = 1 then 1
+  if n = 0 then 1
   else n * fact(n - 1)
 end
 ```
 
-The assertloc() function will raise an error if the statement n > 0 is false. At this point we have a working factorial function and we can start the refinement process. Please check out the following links before proceeding:
+The '''ats assertloc() ''' function will raise an error if the statement '''ats n >= 0 ''' is false. At this point we have a working factorial function and we can start the refinement process. Please check out the following links before proceeding:
 
 - [tail-recursion](http://ats-lang.sourceforge.net/EXAMPLE/EFFECTIVATS/loop-as-tailrec/main.html)
 
@@ -98,21 +98,23 @@ Now, we're getting somewhere
 
 ![](https://i.imgur.com/FoXXCC6.gif)
 
-
+Please read the following [implementation](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#specifying_with_precision) of the factorial function combining both dependent types and tail-recursion.
 
 ### Top Down Approach
 
 In general, especially when coding large projects, a top down approach is extremely productive in ATS.
 
-First, write the code for the function you need to implement. Do not disturb your workflow by implementing the helper functions on the fly. Once you have written your function and you are convinced the logic of your program is sound, simply declare the helper functions. At this point, typecheck your code, read the type errors closely, fix them, and typecheck again. Now that your code passes typechecking, use that same top down approach to tackle the helper functions that are declared but not implemented.
+First, write the code for the function you need to implement. Do not disturb your workflow by implementing the helper functions on the fly. Once you have finished writing your function and you are convinced the logic of your program is sound, simply declare the helper functions. At this point, typecheck your code, read the type errors closely, fix them, and typecheck again. Now that your code passes typechecking, use that same top down approach to tackle the helper functions that are declared but not implemented.
 
-The reason this method is effective is because a trip to the debugger, print statements in your code, unit tests, all require more time than simply typechecking. They all break your workflow and require you to have runnable code at every stage. This forces you to adopt a bottom up approach with no guarantees that the code you write will be needed later on. 
+The reason this method is effective is because a trip to the debugger, print statements in your code, unit tests, all require more time than simply typechecking. They all break your workflow and require you to have runnable code at every stage. This forces you to adopt a bottom up approach with no guarantees that the code you write will be needed later on.
+
+Once you have all the code written you can delay tests even further by refining the types and constructing proofs that help flush out potential bugs.
 
 #### Example using Combinators
 
 It is important to distinguish the imprecise from the flexible. In some languages, functions are overloaded until they become extremely imprecise - it becomes extremely difficult to predict what the output will be for a given input. Think about applying the length function in Python to a 2D array. You can guess that the function will return the number of rows if you store your matrix in row major. But what if now you have a 3D array or an ND array. You can easily see that one dimension will be returned, the question is which one? This is because the length function has become imprecise.
 
-But some languages require you to be so precise about types and functions, it seems impossible to write code that can be reused in a different context. What I mean here is could be creating a different length function for every different object you encounter. Thus repeating a lot of code and being unproductive. So how can we consolidate precision and flexibility?
+On the other hand, some languages require you to be so precise about types and functions that it seems impossible to write code that can be reused in a different context. Technically you could be required to create a different length function for every different object you encounter. Thus repeating a lot of code and being unproductive. So how can we consolidate precision and flexibility?
 
 The solution is [higher-order functions](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#higher-order-functions). They allow for great flexibility, and, with the use of templates, for great precision as well. They also provide a great foundation for mathematical/ formal reasoning about your program.
 
@@ -149,24 +151,27 @@ and finally we get the following list:
 
 20 19 23 16  
 
-Now that the triangle is fully folded, we simply take the max of the resulting list. In this case it's 23. Now that we are logically convinced of our methodology, let's write some code!
+Each of these number represents the max path to that node. So now that the triangle is fully folded, we simply take the max of the resulting list to get the overall max path. In this case it's 23. Now that we are logically convinced of our methodology, let's write some code!
 
-As before we need to think about how we will define our function. Here we want a function that takes in a triangle and returns an integer that represents the max path. As you may have guessed from the combinators above, we will represent a triangle as a list of lists. Our max_path function will have the following declaration:
+As before we need to think about how we will define our function. Here we want a function that takes in a triangle '''ats tr ''' and returns an integer that represents the max path. As you may have guessed from the combinators above, we will represent a triangle as a list of lists. Our max_path function will have the following declaration:
 
 ```ats
+typedef layer = list0(int)
+typedef triangle = list0(layer)
+
 extern
 fun
-max_path(triangle: list0(list0(int))): int
+max_path(tr: triangle): int
 ```
 
-And the following implementation:
+The ```ats typedef ``` above simply gives a name to a type. Here, we define a type called triangle which we choose for now to be a list of layers where a layer is a list of ints (so a triangle is a list of lists of ints). We can implementation max_path in the following way:
 
 ```ats
 implement
-max_path(triangle) =
+max_path(tr) =
   max
   (
-    list0_foldleft<list0(int)>(triangle, nil0(), lam(res, line) => myfold(line, res))
+    list0_foldleft<list0(int)>(tr, nil0(), lam(res, line) => myfold(line, res))
   )
 ```
 
@@ -225,7 +230,7 @@ Great! After typechecking, we can be fairly confident that this code does what w
      about much like ordinary mathematical functions. As a result, these expressions 
      are simple to analyze and compose for large-scale programs"
 
-Please watch the following video about [Why Functional Programming Matters](https://www.youtube.com/watch?v=oB8jN68KGcU). ATS has many functional programming features that make for productive and effective coding. For me it is one of those languages where I almost always get that AH-HA moment of your complex code running on the first try.
+Please watch the following video about [Why Functional Programming Matters](https://www.youtube.com/watch?v=oB8jN68KGcU). ATS has many functional programming features that make for productive and effective coding. For me it is one of those languages where I almost always get that AH-HA moment of complex code running on the first try.
 
 ## Good Practices
 
@@ -250,6 +255,8 @@ Lots of functions with small bodies > less functions with large bodies
 ATS needs space - accross files and folders.
 
 ### Stay vague until you need to be precise
+
+Please see the [following example](https://github.com/ats-lang/ATS-CodeBook/tree/master/RECIPE/Hangman) where the GameLoop function is extremely general.
 
 (to be continued)
 
