@@ -224,17 +224,9 @@ Great! After typechecking, we can be fairly confident that this code does what w
       is the most important characteristic of a top programmer, and the type system of ATS 
       can greatly help one acquire this ability. "
 
-### Functional Programming
-
-    "Functional Programs are mathematical expressions that are evaluated and reasoned 
-     about much like ordinary mathematical functions. As a result, these expressions 
-     are simple to analyze and compose for large-scale programs"
-
-Please watch the following video about [Why Functional Programming Matters](https://www.youtube.com/watch?v=oB8jN68KGcU). ATS has many functional programming features that make for productive and effective coding. For me it is one of those languages where I almost always get that AH-HA moment of complex code running on the first try.
-
 ## Good Practices
 
-![](https://i.imgur.com/AU2XeIz.gif)
+![](https://vignette.wikia.nocookie.net/iceage/images/c/c5/Scrat_covering_up_water.gif/revision/latest?cb=20161121160622)
 
 ### Structure
 
