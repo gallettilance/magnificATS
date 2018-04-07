@@ -33,6 +33,17 @@ get
 
 (* ****** ****** *)
 
+fun
+{A:t@ype}
+mylist_length
+{n: nat}
+(xs: mylist(A, n)): int(n) =
+  case+ xs of
+  | nil() => 0
+  | cons(x, xs) => 1 + mylist_length(xs)
+
+(* ****** ****** *)
+
 implement
 main0() = ()
 where
