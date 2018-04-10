@@ -93,27 +93,27 @@ end
 
 (* ****** ****** *)
 
-overload [] with myarray_get_ith
-
 extern
 fun
 {a:t@ype}
 myarray_map
-{l: addr}{n: nat}
-(pf: !myarray(a, l, n) | p0: ptr(l), f:a-<cloref1>a): void
+{l: addr}{n: nat | n > 0}
+(pf: !myarray(a, l, n) | p0: ptr(l), n: int(n), f:a-<cloref1>a):  void
 
 (* ****** ****** *)
-////
+
 implement
 {a}
-myarray_map(pf | p0, f) = let
+myarray_map(pf | p0, n, f) = let
     prval myarray_cons(pf1, pf2) = pf
     val elm = ptr_get<a>(pf1 | p0)
     val ()  = ptr_set<a>(pf1 | p0, f(elm))
     val p1  = ptr_succ<a>(p0)
-in
-  (pf:= myarray_cons(pf1, pf2); myarray_map(pf | p1, f))
-end
+  in
+    if n = 1
+    then ()
+    else myarray_map(pf2 | p1, n - 1, f); pf := myarray_cons(pf1, pf2)
+  end
 
 (* ****** ****** *)
 
