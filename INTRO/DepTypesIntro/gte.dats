@@ -15,7 +15,7 @@ dataprop GTE (int, int) =
 
 (* ****** ****** *)
 
-prval pf1gte1 = eq{1}()
+prval pf1gte1 = eq() : GTE(1, 1)
 prval pf2gte1 = gt{2,1}(pf1gte1)
 prval pf3gte1 = gt{3,1}(pf2gte1)
 
