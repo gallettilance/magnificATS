@@ -1,5 +1,7 @@
 # Intro to Functional Programming - or how to code productively
 
+You can find this article [here](https://beta.observablehq.com/@galletti94/productive-programming-in-ats) or read it below.
+
 ## Why you should care
 
 ![](https://i.imgur.com/HTisMpC.jpg)
