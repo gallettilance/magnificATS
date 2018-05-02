@@ -12,7 +12,7 @@ A collection of various programming exercises I have done in ATS.
 
 ### INTRO
 
-[INTRO](./INTRO) contains an article I wrote about ATS and Functional Programming.
+[INTRO](./INTRO) contains some introductory examples and an article I wrote about ATS and Functional Programming.
 
 ### EXPRESSION
 
