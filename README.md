@@ -7,7 +7,9 @@ A collection of various programming exercises I have done in ATS.
    * [INTRO](#intro)
    * [EXPRESSION](#expression)
    * [LAMBDA](#lambda)
-   * [STATISTICS](#statistics)
+   * [ML](#ml)
+   * [PROJECT EULER](#euler)
+   * [RECURSION](#recursion)
    * [DIRECTORY TREE](#tree)
 
 ### INTRO
@@ -26,17 +28,22 @@ A collection of various programming exercises I have done in ATS.
 
 ![example](LAMBDA/GIF/tty.gif)
 
+### ML
+
+[ML](./ML) contains a library of basic statistical functions written in various styles. An interface for performing Linear Regression in 2D is provided. This folder also contains a small neural network library.
+
+![example](./ML/STATISTICS/GIF/tty.gif)
+
+### EULER
+
+[PROJECTEULER](./PROJECTEULER) contains some project euler problems
+
 ### RECURSION
 
 [RECURSION](./RECURSION) is a collection of algorithms written in a recursive style. You will find some dynamic programming, graph search, and other fun problems here.
 
 ![example](RECURSION/Sudoku/GIF/tty2.gif)
 
-### STATISTICS
-
-[STATISTICS](./STATISTICS) is a library of basic statistical functions written in various styles. An interface for performing Linear Regression in 2D is provided.
-
-![example](STATISTICS/GIF/tty.gif)
 
 ### Tree
 
