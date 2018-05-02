@@ -32,7 +32,7 @@ A collection of various programming exercises I have done in ATS.
 
 [ML](./ML) contains a library of basic statistical functions written in various styles. An interface for performing Linear Regression in 2D is provided. This folder also contains a small neural network library.
 
-![example](./ML/STATISTICS/GIF/tty.gif)
+![example](./ML/Statistics/GIF/tty.gif)
 
 ### EULER
 
