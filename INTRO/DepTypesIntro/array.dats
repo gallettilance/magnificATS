@@ -17,7 +17,7 @@ myarray
 ) =
   | {l:addr}
     myarray_nil(a, l, 0)
-  | {l:addr}{n:int}
+  | {l:addr}{n:nat}
     myarray_cons(a, l, n + 1) of (a@l, myarray(a, l + sizeof(a), n))
 
 (* ****** ****** *)
@@ -49,6 +49,14 @@ fun
 myarray_set_ith
 {l: addr}{n: int | n > 0}{i: int | i >= 0 && i < n}
 (pf: !myarray(a, l + (i * sizeof(a)), n - i) | pi: ptr(l + (i *sizeof(a))), elm: a): void
+
+extern
+fun
+{a:t@ype}
+myarray_initialize
+{l:addr}{n:nat}
+( pf: !myarray(a?, l, n) >> myarray(a, l, n)
+| p0: ptr(l), n: int(n), fwork: (&a? >> a) -<cloref1> void): void
 
 (* ****** ****** *)
 
@@ -118,11 +126,35 @@ myarray_map(pf | p0, n, f) = let
 (* ****** ****** *)
 
 implement
-main0() = ()
-where
-{
+{a}
+myarray_initialize
+{l}{n}
+(pf | p0, n, fwork) = 
+if n = 0 
+then 
+(
+  let
+    prval myarray_nil() = pf
+  in
+    pf := myarray_nil()
+  end
+)
+else
+(
+  let
+    prval myarray_cons(pfat, pfarr) = pf
+    val () = fwork(!p0)
+    val p1 = ptr_succ<a>(p0)
+    val () = myarray_initialize(pfarr | p1, n - 1, fwork)
+  in
+    pf:= myarray_cons(pfat, pfarr)
+  end
+)
 
-}
+(* ****** ****** *)
+
+implement
+main0() = ()
 
 (* ****** ****** *)
 
