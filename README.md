@@ -47,6 +47,7 @@ A collection of various programming exercises I have done in ATS.
 
 ### Tree
 
+
 ├── EXPRESSION  
 │   ├── Derivative  
 │   │   ├── deriv.dats  
@@ -70,31 +71,55 @@ A collection of various programming exercises I have done in ATS.
 ├── INTRO  
 │   ├── DepTypesIntro  
 │   │   ├── array.dats  
+│   │   ├── array_repr.dats  
 │   │   ├── gte.dats  
 │   │   ├── gte_unsafe.dats  
-│   │   └── list_safe.dats  
+│   │   ├── list.dats  
+│   │   ├── list_list.dats  
+│   │   ├── matrix.dats  
+│   │   └── mod.dats  
 │   ├── Makefile_template  
 │   ├── README.md  
+│   ├── TEMPLATE  
+│   │   ├── DATS  
+│   │   │   └── template.dats  
+│   │   ├── mylibies.dats  
+│   │   ├── mylibies.sats  
+│   │   ├── SATS  
+│   │   │   └── template.sats  
+│   │   └── TEST  
+│   │       ├── Makefile  
+│   │       └── test00.dats  
 │   ├── template.dats  
 │   └── triangle  
 │       └── triangle.dats  
-├── LAMBDA   
-│   ├── Functions  
-│   │   ├── helper_interp.dats  
-│   │   ├── helper_subst.dats  
+├── LAMBDA  
+│   ├── Examples  
+│   │   ├── basic.txt  
+│   │   ├── fact.dats  
+│   │   ├── fibo.dats  
 │   │   ├── Makefile  
 │   │   ├── prime.dats  
 │   │   └── queens.dats  
 │   ├── GIF  
 │   │   └── tty.gif  
+│   ├── Interpreter  
+│   │   ├── helper_interp.dats  
+│   │   ├── helper_subst.dats  
+│   │   ├── lambda_interp.dats  
+│   │   └── lambda_subst.dats  
+│   ├── Makefile  
+│   ├── mylibies.dats  
+│   ├── Parser  
+│   │   └── lisp_parser.dats  
 │   ├── README.md  
-│   └── Struct  
-│       ├── lambda_interp.dats  
-│       ├── lambda_subst.dats  
-│       ├── print_term.dats  
-│       ├── print_val.dats  
-│       └── struct.dats  
-├── LAZY
+│   ├── Struct  
+│   │   ├── print_term.dats  
+│   │   ├── print_val.dats  
+│   │   ├── string_base.dats  
+│   │   └── struct.dats  
+│   └── test.dats  
+├── LAZY  
 │   ├── Sieve  
 │   │   ├── Makefile  
 │   │   └── sieve.dats  
@@ -106,12 +131,55 @@ A collection of various programming exercises I have done in ATS.
 │   │   ├── print_board.dats  
 │   │   ├── README.md  
 │   │   ├── set_board.dats  
-│   │   ├── sudoku.dats   
-│   │   ├── test.dats   
+│   │   ├── sudoku.dats  
+│   │   ├── test.dats  
 │   │   └── valid_board.dats  
 │   └── TheNats2  
 │       ├── Makefile  
 │       └── nats2.dats  
+├── ML  
+│   ├── NeuralNet  
+│   │   ├── data  
+│   │   │   ├── iris.csv  
+│   │   │   ├── mnist_chunkaa  
+│   │   │   ├── mnist_chunkab  
+│   │   │   ├── mnist_chunkac  
+│   │   │   ├── mnist_chunkad  
+│   │   │   ├── mnist_chunkae  
+│   │   │   ├── mnist_chunkaf  
+│   │   │   ├── mnist_chunkag  
+│   │   │   ├── mnist_chunkah  
+│   │   │   ├── mnist_chunkai  
+│   │   │   ├── mnist_chunkaj  
+│   │   │   └── mnist_chunkak  
+│   │   ├── mylibies.dats  
+│   │   ├── README.md  
+│   │   ├── src  
+│   │   │   ├── matrix.dats  
+│   │   │   ├── nniris.dats  
+│   │   │   ├── nnmnist.dats  
+│   │   │   ├── readcsv.dats  
+│   │   │   └── stats.dats  
+│   │   └── test  
+│   │       ├── Makefile  
+│   │       ├── test00.dats  
+│   │       ├── test01.dats  
+│   │       └── test02.dats  
+│   └── Statistics  
+│       ├── DATS  
+│       │   └── stats.dats  
+│       ├── GIF  
+│       │   └── tty.gif  
+│       ├── mylibies.dats  
+│       ├── mylibies.sats  
+│       ├── README.md  
+│       ├── SATS  
+│       │   └── stats.sats  
+│       └── TEST  
+│           ├── Makefile  
+│           ├── test00.dats  
+│           └── test01.dats  
+├── myfile.txt  
 ├── PROJECTEULER  
 │   ├── p01  
 │   │   ├── Makefile  
@@ -130,12 +198,12 @@ A collection of various programming exercises I have done in ATS.
 │   ├── p05  
 │   │   ├── Makefile  
 │   │   └── smallmul.dats  
-│   ├── p06   
+│   ├── p06  
 │   │   ├── Makefile  
 │   │   └── sumsq.dats  
 │   ├── p07  
 │   │   ├── Makefile  
-│   │   └── sieve.dats    
+│   │   └── sieve.dats  
 │   ├── p08  
 │   │   ├── lprod.dats  
 │   │   ├── Makefile  
@@ -190,7 +258,7 @@ A collection of various programming exercises I have done in ATS.
 │   │   ├── Makefile  
 │   │   ├── package.json  
 │   │   └── README.md  
-│   ├── p21
+│   ├── p21  
 │   │   ├── amicable.dats  
 │   │   └── Makefile  
 │   ├── p22  
@@ -200,7 +268,7 @@ A collection of various programming exercises I have done in ATS.
 │   │   ├── package.json  
 │   │   └── README.md  
 │   ├── p23  
-│   │   ├── abundant.dats   
+│   │   ├── abundant.dats  
 │   │   └── Makefile  
 │   ├── p24  
 │   │   ├── Makefile  
@@ -213,106 +281,93 @@ A collection of various programming exercises I have done in ATS.
 │   ├── p26  
 │   │   ├── cycles.dats  
 │   │   ├── Makefile  
-│   │   └── README.md   
+│   │   └── README.md  
 │   ├── p27  
-│   │   ├── Makefile    
+│   │   ├── Makefile  
 │   │   └── quadprime.dats  
-│   ├── p28  
-│   │   ├── Makefile  
-│   │   └── spiral.dats  
+│   └── p28  
+│       ├── Makefile  
+│       └── spiral.dats  
 ├── README.md  
-├── RECURSION  
-│   ├── 2sum  
-│   │   ├── 2sum.dats  
-│   │   ├── Makefile  
-│   │   └── test.dats  
-│   ├── 3sum  
-│   │   ├── 3sum.dats  
-│   │   ├── Makefile  
-│   │   └── test.dats  
-│   ├── Chess  
-│   ├── Factorial  
-│   │   ├── fact.dats  
-│   │   ├── factpf.dats  
-│   │   └── Makefile  
-│   ├── Fibonacci  
-│   │   ├── fibo.dats  
-│   │   ├── fibopf.dats  
-│   │   ├── fiboprop.dats  
-│   │   └── Makefile  
-│   ├── Loading  
-│   │   ├── loading.dats  
-│   │   └── Makefile  
-│   ├── NQueens  
-│   │   ├── GIF  
-│   │   │   ├── tty2.gif  
-│   │   │   └── tty.gif  
-│   │   ├── Makefile  
-│   │   └── nqueen.dats  
-│   ├── Palindrome  
-│   │   ├── drome.dats   
-│   │   └── Makefile  
-│   ├── Permutations  
-│   │   └── perm.dats  
-│   ├── README.md  
-│   ├── Roman  
-│   │   ├── Makefile  
-│   │   └── rnumerals.dats  
-│   ├── SimpleDB  
-│   │   ├── Makefile  
-│   │   └── Simple_database.dats  
-│   ├── Staircase  
-│   │   ├── Staircase3  
-│   │   │   ├── Makefile  
-│   │   │   └── stair3.dats  
-│   │   └── StaircaseM  
-│   │       └── stairM.dats  
-│   ├── Subsets  
-│   │   ├── Makefile  
-│   │   └── subset.dats  
-│   ├── Sudoku  
-│   │   ├── board.dats  
-│   │   ├── get_board.dats  
-│   │   ├── GIF  
-│   │   │   ├── tty2.gif  
-│   │   │   └── tty.gif  
-│   │   ├── Makefile  
-│   │   ├── mylibies.dats  
-│   │   ├── print_board.dats  
-│   │   ├── README.md  
-│   │   ├── set_board.dats  
-│   │   ├── sudoku.dats  
-│   │   ├── test.dats  
-│   │   └── valid_board.dats  
-│   ├── Trees   
-│   │   ├── bfs.dats  
-│   │   ├── checkbst.dats  
-│   │   ├── dfs.dats  
-│   │   ├── Makefile  
-│   │   ├── README.md  
-│   │   ├── tree.dats  
-│   │   └── tty.gif  
-│   └── Triangular  
-│       ├── Makefile  
-│       ├── package.json  
-│       ├── README.md  
-│       └── triangular.dats  
-├── STATISTICS  
-│   ├── DATS  
-│   │   └── stats.dats  
-│   ├── GIF  
-│   │   └── tty.gif  
-│   ├── mylibies.dats  
-│   ├── mylibies.sats  
-│   ├── README.md  
-│   ├── SATS  
-│   │   └── stats.sats  
-│   └── TEST  
-│       ├── Makefile  
-│       ├── test00.dats  
-│       └── test01.dats  
+└── RECURSION  
+    ├── 2sum  
+    │   ├── 2sum.dats  
+    │   ├── Makefile  
+    │   └── test.dats  
+    ├── 3sum  
+    │   ├── 3sum.dats  
+    │   ├── Makefile  
+    │   └── test.dats  
+    ├── Factorial  
+    │   ├── fact.dats  
+    │   ├── factpf.dats  
+    │   ├── factprop.dats  
+    │   └── Makefile  
+    ├── Fibonacci  
+    │   ├── fibo.dats  
+    │   ├── fibopf.dats  
+    │   ├── fiboprop.dats  
+    │   └── Makefile  
+    ├── Loading  
+    │   ├── loading.dats  
+    │   └── Makefile  
+    ├── NQueens  
+    │   ├── GIF  
+    │   │   ├── tty2.gif  
+    │   │   └── tty.gif  
+    │   ├── Makefile  
+    │   └── nqueen.dats  
+    ├── Palindrome  
+    │   ├── drome.dats  
+    │   └── Makefile  
+    ├── Permutations  
+    │   └── perm.dats  
+    ├── README.md  
+    ├── Roman  
+    │   ├── Makefile  
+    │   └── rnumerals.dats  
+    ├── SimpleDB  
+    │   ├── Makefile  
+    │   └── Simple_database.dats  
+    ├── Staircase  
+    │   ├── Staircase3  
+    │   │   ├── Makefile  
+    │   │   └── stair3.dats  
+    │   └── StaircaseM  
+    │       └── stairM.dats  
+    ├── Subsets  
+    │   ├── Makefile  
+    │   └── subset.dats  
+    ├── Sudoku  
+    │   ├── board.dats  
+    │   ├── get_board.dats  
+    │   ├── GIF  
+    │   │   ├── tty2.gif  
+    │   │   └── tty.gif  
+    │   ├── Makefile  
+    │   ├── mylibies.dats  
+    │   ├── print_board.dats  
+    │   ├── README.md  
+    │   ├── set_board.dats  
+    │   ├── sudoku.dats  
+    │   ├── test.dats  
+    │   └── valid_board.dats  
+    ├── Trees  
+    │   ├── bfs.dats  
+    │   ├── checkbst.dats  
+    │   ├── dfs.dats  
+    │   ├── Makefile  
+    │   ├── README.md  
+    │   ├── tree.dats  
+    │   └── tty.gif  
+    └── Triangular  
+        ├── Makefile  
+        ├── package.json  
+        ├── README.md  
+        └── triangular.dats  
+  
+82 directories, 235 files
 
-71 directories, 192 files  
 _____
 
 Please visit [ats-lang.org](http://www.ats-lang.org/) for information about how to get started with ATS.
