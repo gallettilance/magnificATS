@@ -4,7 +4,9 @@
 //
 (* ****** ****** *)
 
-#include "./helper_interp.dats"
+#include "share/atspre_staload.hats"
+#include "share/HATS/atspre_staload_libats_ML.hats"
+#include "./../mylibies.dats"
 
 (* ****** ****** *)
 
@@ -23,7 +25,7 @@ val args = TMvar("args")
 val print_dots = 
 TMfix("f", "t",
   TMifnz(t > TMint(0) ,
-    TMseq( TMopr("print", list0_tuple(TMstr(". "))), TMapp(f, t - 1) ), TMopr("print", list0_tuple(TMstr(""))) ))
+    TMseq( TMopr("print", list0_tuple(TMstr(". "))), TMapp(f, t - TMint(1)) ), TMopr("print", list0_sing(TMstr("")) )))
 
 val print_row =
 TMlam("t",
@@ -33,8 +35,8 @@ TMlam("t",
       TMopr("print", list0_tuple(TMstr("Q ")))
     ),
     TMseq(
-      TMapp(print_dots, N - t - 1),
-      TMopr("println", list0_tuple(TMstr("")))
+      TMapp(print_dots, N - t - TMint(1)),
+      TMopr("println", list0_sing(TMstr("")) )
     )
   )
 )
@@ -283,7 +285,8 @@ main0() = ()
 where
 {
 val board = TMtup(cons0(TMint(0), cons0(TMint(0), cons0(TMint(0), cons0(TMint(0), cons0(TMint(0), cons0(TMint(0), cons0(TMint(0), cons0(TMint(0), nil0() )) )) )) )) )
-val () = println!(interp(TMapp(search, TMtup(cons0(board, cons0(TMint(0), cons0(TMint(0), cons0(TMint(0), nil0()))))) )))
+val out = fileref_open_exn("./queens.txt", file_mode_a)
+val () = fprint!(out, TMapp(search, TMtup(cons0(board, cons0(TMint(0), cons0(TMint(0), cons0(TMint(0), nil0()))))) ))
 }
 
 (* ****** ****** *)

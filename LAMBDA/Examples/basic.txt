@@ -1,0 +1,1 @@
+(TMproj (TMtup (TMint 0) (TMint 1)) 1)
