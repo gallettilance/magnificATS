@@ -10,7 +10,7 @@ A collection of various programming exercises I have done in ATS.
    * [ML](#ml)
    * [PROJECT EULER](#euler)
    * [RECURSION](#recursion)
-   * [DIRECTORY TREE](#tree)
+   * [DIRECTORY INFO](#info)
 
 ### INTRO
 
@@ -45,7 +45,24 @@ A collection of various programming exercises I have done in ATS.
 ![example](RECURSION/Sudoku/GIF/tty2.gif)
 
 
-### Tree
+### Info
+
+#### Polyglot Output
+
+-------------------------------------------------------------------------------  
+Language           35mFiles       Lines         Code     Comments       Blanks  
+-------------------------------------------------------------------------------  
+ ATS                    124       11537         9141          567         1829  
+ Makefile                56        1968         1352            0          616  
+ Markdown                22         722          551            0          171  
+ Plaintext                5         202          202            0            0  
+-------------------------------------------------------------------------------  
+ Total                  207       14429        11246          567         2616  
+-------------------------------------------------------------------------------  
+
+
+#### Directory Tree
+
 
 ├── EXPRESSION  
 │   ├── Derivative  
