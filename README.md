@@ -7,6 +7,7 @@ A collection of various programming exercises I have done in ATS.
    * [INTRO](#intro)
    * [EXPRESSION](#expression)
    * [LAMBDA](#lambda)
+   * [LAZY](#lazy)
    * [ML](#ml)
    * [PROJECT EULER](#euler)
    * [RECURSION](#recursion)
@@ -27,6 +28,10 @@ A collection of various programming exercises I have done in ATS.
 [LAMBDA](./LAMBDA) is a small programming language that provides an interface for creating lambda functions and developing/ interpreting lambda calculus examples.
 
 ![example](LAMBDA/GIF/tty.gif)
+
+### LAZY
+
+[LAZY](./LAZY) contains various examples of neat use-cases for streams and lazy evaluation.
 
 ### ML
 
