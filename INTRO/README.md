@@ -6,25 +6,25 @@ You can find this article [here](https://beta.observablehq.com/@galletti94/produ
 
 ![](https://i.imgur.com/HTisMpC.jpg)
 
-If you have not already experienced this, the debugging process of programming can be traumatizing. Relentless as you may be, eventually, when something goes wrong and you seem to have tried everything, you will reach a point that makes you doubt your love for programming. If you go through this enough, the passion and excitement of coding get shadowed by fear, anxiety, and the perspective of a reliving the past trauma of endless debugging.
+If you have not already experienced this, the debugging process of programming can be traumatizing. Relentless as you may be, eventually, when something goes wrong and you seem to have tried everything, you will reach a point that makes you doubt your love for programming. After a while, the excitement of coding will have long been shadowed by the fear of reliving endless debugging. So why does this happen and what can we do about it? 
 
-![](http://s2.quickmeme.com/img/80/80ff000de170d180836519b11ef29b7814dc5d5b5b24abed94f5c3828075e811.jpg)
+Beyond the obvious benefits associated with increased productivity, this problem needs to be solved because ripping your hair out just doesn't seem to work anymore. The goal of ATS is to restore your love of coding by providing you with interesting functional features combined with a methodology for reducing debugging and testing - and hence increasing your productivity. To understand the benefits of this process, we first need to take a step back and look at the components of the current process.
 
-The goal of ATS is to restore your love of coding by providing you with interesting functional features combined with a methodology for reducing debugging and testing. But to understand why this works we need to take a step back and examine the current state of our coding process. Consider the following naive approach to programming which I had adopted:
+## The Problem
 
-I was assigned a task. I started coding until I reached a point where I got this terrible feeling that I ought to test what I've written so far so as to avoid even lengthier debugging later on. I would then discover a few bugs and battle with my code in order to pass whatever unit tests I could think of. In this battle the means justified the ends and my code got cluttered with hacks and other small patches that, accumulated, made my code unmaintainable.
+Bob is assigned a task. Bob decides to start coding pretty much right away. A few hours in, Bob realizes he misunderstood part of the statement of the task and should patch a few things up before continuing. Bob continues coding and eventually reachs a point, out of nowhere, where this terrible feeling comes over him that he ought to test what he's written so far so as to avoid even lengthier debugging later on. Bob then discovers a few bugs and battles with the code in order to pass some unit tests. In this battle the means justify the ends and Bob's code gets cluttered with hacks and other small patches that, accumulated, make his code unmaintainable.
 
 ![](https://s3.amazonaws.com/rails-camp-tutorials/blog/programming+memes/works-doesnt-work.jpg)
 
-I would repeat this process - every iteration worse than the previous - until I had something workable that somewhat sort of solved a very small subset of the problem. I soon realized that it is only THEN that your manager, colleague or friend comes up to you and says "Hey, why don't we add feature x and change feature y".
+Bob then repeats this process - every iteration more intellectually acrobatic than the previous - until Bob has something workable that somewhat sort of solves a very small subset of the problem. Bob's code has done the job. Bob's client / manager / friend, then says "Hey, why don't we add feature x and change feature y"
 
-![](https://vignette.wikia.nocookie.net/spongefan/images/2/23/Tulio_head_banging.gif/revision/latest?cb=20150612222916)
+![](http://www.reactiongifs.com/wp-content/uploads/2013/07/putersmash.gif)
 
-At this point, there is really no feasible alternative to just simply starting from scratch. Clearly, this process has a terrible impact on one's own productivity and love for coding. But it also affects the people you work with and the users of your software. Every coder contributing to this code will have to go through incredible mental acrobatics in order to "add feature x and change feature y" because neither you nor anyone else wants to examine or read through your code. In turn this drastically dampens the user's experience because software evolution is too slow.
+Don't be like Bob because at this point, there is really no feasible alternative to just simply starting from scratch. Clearly, this process has a terrible impact on one's own productivity and love for coding. But it also affects the people you work with and the users of your software. Every coder contributing to this code will have to overcome an unnecessarily steep learning curve in order to "add feature x and change feature y". And overall, neither you nor anyone else will ever want to examine or read through your code again. In turn this drastically dampens the user's experience because software evolution is too slow.
 
 Complexity is a programmer's worst enemy, and as our lives start depending more and more on software, what we code should be just as important as how we code it. Obviously, with enough time, we can have the luxury of focusing on quality. But with deadlines and other obstacles, how can we make this happen? One option is to sharpen the tools you use - means making smarter editors - which is an incredible push toward productivity.
 
-However, this does not directly solve the issue - we need to avoid spaghetti, buggy code from the start. We need to apply the same mathematical rigor with which we analyze algorithms to the way we code. In short, we need functional programming which is a way of reasoning about programs like mathematical expressions, so as to analyze and compose them to propagate this reasoning into larger software.
+However, this does not directly solve the issue - we need to avoid spaghetti, buggy code from the start. We need to apply the same mathematical rigor with which we analyze algorithms to the way we code. Functional programming is a way of reasoning about programs like mathematical expressions, so as to analyze and compose them to propagate this reasoning into larger software.
 
 ## How it works
 
@@ -34,13 +34,13 @@ One view is that code passing all tests equates to correctness. From a mathemati
 
 ![](https://i.imgur.com/e16qOEj.gif)
 
-ATS uses types and theorem proving to flush out bugs statically (i.e. without having to run the code). In the context of Machine Learning, runtime tests can be extremely expensive, and in the context of say crypto-currency, relying solely on testing for validation can be extremely risky. Type errors always point back to the origin of the error and force you to examine the logic of your code instead of finding hacks.
+ATS uses types and theorem proving to flush out bugs statically (i.e. without having to run the code). In the context of Machine Learning, runtime tests can be extremely expensive, and in the context of say crypto-currency, relying solely on testing for validation can be extremely risky and most of the time infeasible. Type errors always point back to the origin of the error and force you to examine the logic of your code instead of finding hacks.
 
-Consider that in order for an if statement to pass typechecking, both the then branch and the else branch need to typecheck. However, at runtime, you can only test one branch at a time. ATS uses types to its advantage in that the coverage of types is total while its precision is, in general, limited. So it encourages the programmer to refine (increase the precision of) the types he/she usees. The idea is then to allow type specification to be so precise that passing typechecking equates to correctness.
+Consider that in order for an if statement to pass typechecking, both the then branch and the else branch need to typecheck. However, at runtime, you can only test one branch at a time. ATS uses types to its advantage in that the coverage of types is total while its precision is, in general, limited. So it encourages the programmer to refine (increase the precision of) the types he/she uses. The idea is then to allow type specification to be so precise that passing typechecking equates to correctness.
 
-But this kind of precision can negatively affect productivity if used incorrectly. So we need to accompany these language features with a method to use these constructs productively. The methodology that accompanies each language is truely what distinguishes one language's productivity from another - not how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot.
+But this kind of precision can negatively affect productivity if used incorrectly. So we need to accompany these language features with a method to use these constructs effectively. The methodology that accompanies each language is truely what distinguishes one language's productivity from another - not how high level or domain specific it is. If, as a coder, your methodology does not change with the language you use, then you will likely be facing the debugger a lot.
 
-The goal of this talk is to outline a methodology and list good practices, that, when combined with ATS, make for an extremely productive workflow. Giving time back to the programmer allows for better focus on quality. It will be up to the reader to decide how to translate this methodology into the constructs of his/her language of choice.
+The goal of this talk is to outline a methodology and list good practices, that, when combined with ATS, make for an extremely productive workflow. Giving time back to the programmer allows for better focus on quality. It will be up to the reader to decide how to translate this methodology into the constructs of his/her language of choice - here we will focus on ATS
 
 ![](http://www.cdotson.com/wp-content/uploads/2011/11/XKCD_The_General_Problem.jpg)
 
@@ -53,7 +53,7 @@ The ATS perspective is to start vague and refine. Start with simple types: the d
 There are many excellent tutorials about getting started with ATS and its syntax. The goal of the following (albeit somewhat pendantic) example is simply to illustrate the concept mentioned above - not necessarily to re-iterate the ATS tutorial. Let's start with the factorial function.
 
 Deciding what the input and output types of a function will be is a bit like writing the introduction of an essay: you should write it after you have determined the overall logic and structure of the body. Here, the factorial function we want to implement takes as input a positive integer n and outputs the product of all strictly positive integers less than or equal to n. As such, we can declare our function fact as:
-  
+
 ```ats
 extern
 fun
@@ -90,7 +90,7 @@ in
 end
 ```
 
-The '''ats assertloc() ''' function will raise an error if the statement '''ats n >= 0 ''' is false. At this point we have a working factorial function and we can start the refinement process. Please check out the following links before proceeding:
+The ```ats assertloc()``` function will raise an error if the statement ```ats n >= 0``` is false. At this point we have a working factorial function and we can start the refinement process. Please check out the following links before proceeding:
 
 - [tail-recursion](http://ats-lang.sourceforge.net/EXAMPLE/EFFECTIVATS/loop-as-tailrec/main.html)
 
@@ -114,11 +114,11 @@ Once you have all the code written you can delay tests even further by refining 
 
 #### Example using Combinators
 
-It is important to distinguish the imprecise from the flexible. In some languages, functions are overloaded until they become extremely imprecise - it becomes extremely difficult to predict what the output will be for a given input. Think about applying the length function in Python to a 2D array. You can guess that the function will return the number of rows if you store your matrix in row major. But what if now you have a 3D array or an ND array. You can easily see that one dimension will be returned, the question is which one? This is because the length function has become imprecise.
+It is important to distinguish the imprecise from the flexible. In some languages, functions are overloaded until they become imprecise - it becomes extremely difficult to predict what the output will be for a given input. Think about applying the length function in Python to a 2D array. You can guess that the function will return the number of rows if you store your matrix in row major. But what if now you have a 3D array or an ND array. You can easily see that one dimension will be returned, the question is which one? This is because the length function has become imprecise.
 
-On the other hand, some languages require you to be so precise about types and functions that it seems impossible to write code that can be reused in a different context. Technically you could be required to create a different length function for every different object you encounter. Thus repeating a lot of code and being unproductive. So how can we consolidate precision and flexibility?
+On the other hand, some languages require you to be so precise about types and functions that it seems impossible to write code that can be reused in a different context. Technically you could be required to create a new length function for every different object you encounter. Thus repeating a lot of code and being unproductive. So how can we consolidate precision and flexibility?
 
-The solution is [higher-order functions](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#higher-order-functions). They allow for great flexibility, and, with the use of templates, for great precision as well. They also provide a great foundation for mathematical/ formal reasoning about your program.
+The solution is [polymorphic functions](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#parametric_polymorphism) and [higher-order functions](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html#higher-order-functions). They allow for extensive code reuse while preserving precision. They also provide a great foundation for mathematical/ formal reasoning about your program.
 
 ATS has a large combinator library that can make your code elegant and readable. Some of these combinators include
 
@@ -127,9 +127,9 @@ ATS has a large combinator library that can make your code elegant and readable.
 - [map2](http://ats-lang.sourceforge.net/LIBRARY/libats/ML/SATS/DOCUGEN/HTML/list0.html#list0_map2)
 - [foldleft2](http://ats-lang.sourceforge.net/LIBRARY/libats/ML/SATS/DOCUGEN/HTML/list0.html#list0_foldleft2)
 
-Please take the time to get familiar with these functions before moving along.
+Please take the time to get familiar with these functions before moving along. We will use these combinators to solve Project Euler's [problem 18](https://projecteuler.net/problem=18).
 
-We will use these combinators to solve Project Euler's [problem 18](https://projecteuler.net/problem=18). A Brute Force algorithm for this will be to explore all possible paths and find the maximum. However, as indicated in the problem statement, we can do better. After a short review of [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming), we notice we can fold the triangle onto itself in such a way to obtain a list of the max paths to each leaf node of the triangle. Then we need only find the maximum of that list. To illustrate this, let us take the smaller triangle from the problem's example:
+A Brute Force algorithm for this will be to explore all possible paths and find the maximum. However, as indicated in the problem statement, we can do better. After a short review of [dynamic programming](https://en.wikipedia.org/wiki/Dynamic_programming), we notice we can fold the triangle onto itself in such a way to obtain a list of the max paths to each leaf node of the triangle. Then we need only find the maximum of that list. To illustrate this, let us take the smaller triangle from the problem's example:
 
 3  
 7 4  
@@ -232,28 +232,24 @@ Great! After typechecking, we can be fairly confident that this code does what w
 
 ### Structure
 
-Here is an outline of the code templates I use to structure my ATS code.
-
-- [Single File Template](./template.dats)
-
-- [Folder Template](./TEMPLATE)
+Here is an outline of the code templates I use to structure my ATS code.  
+- [Single File Template](./template.dats)  
+- [Folder Template](./TEMPLATE)  
 
 The goal is to generate "boring" code. The idea is if your code is boring, it is straightforward and consistent - two crucial premises to readable and maintainable code. Following a template and a style you can conform to makes it easier to write "boring" code.
 
 ### Functions and Combinators
 
-Lots of functions with small bodies > less functions with large bodies
+Lots of functions with small bodies is far more readable than less functions with large bodies
 
 ### Spacing
 
 ATS needs space - accross files and folders.
 
-### Stay vague until you need to be precise
+### Late Binding
 
-Please see the [following example](https://github.com/ats-lang/ATS-CodeBook/tree/master/RECIPE/Hangman) where the GameLoop function is extremely general.
-
-(to be continued)
+Stay vague until you need to be precise! Please see the [following example](https://github.com/ats-lang/ATS-CodeBook/tree/master/RECIPE/Hangman) where the GameLoop function is extremely general.  
 
 ------
 
-Read the book [Introduction to Programming in ATS](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html)
+For more information about ATS, please read the book [Introduction to Programming in ATS](http://ats-lang.github.io/DOCUMENT/INT2PROGINATS/HTML/INT2PROGINATS-BOOK-onechunk.html)
