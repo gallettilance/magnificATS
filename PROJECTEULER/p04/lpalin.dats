@@ -102,7 +102,6 @@ lpalin(p) = let
           val a = 1001 - n / j
           val b = 1001 - 11 * j
           val test = int2string(a * b)
-          val () = println!("test = ", test)
         in
           if is_palindrome(string_explode(test)) then a * b
           else loop(j + 1)
