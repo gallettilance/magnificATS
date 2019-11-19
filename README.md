@@ -68,7 +68,7 @@ A collection of various programming exercises I have done in ATS.
 #### Directory Tree
 
 
-
+```
 ├── EXPRESSION  
 │   ├── Derivative  
 │   │   ├── deriv.dats  
@@ -388,6 +388,7 @@ A collection of various programming exercises I have done in ATS.
         └── triangular.dats  
   
 82 directories, 235 files
+```
 
 _____
 
